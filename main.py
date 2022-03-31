@@ -41,7 +41,7 @@ async def 소환(ctx,text=None):
         channel = ctx.author.voice.channel
         if channel == None:
             return None
-        channel.connect()
+        await channel.connect()
     else:
         return None
 @bot.command(aliases=['server'])

@@ -9,7 +9,7 @@ intents = discord.Intents.default()
 intents.members = True
 bot=commands.Bot(command_prefix='./',intents = intents)
 jobs1 = {'Destroyer':[858024177097244692,906130095050194984],'WarLord':[858024416364855297,906130181066993686],'Berserker':[858024445038034944,906130245512466462],'HolyKnight':[858024470040412220,906130259374665728],'BattleMaster':[858024753180835891,906130412844232737],'infighter':[858024790383788063,906130449028501544],'SoulMater':[858025164129304607,906130482931068958],'LanceMaster':[858025187680976896,906130507476127764],'Striker':[858025214456496128,906130526870573056],'DevilHunter':[858025356111249408,906130842454212658],'Blaster':[858025430287515678,906130898729189406],'HawkEye':[858025451288395777,906130923999887410],'Scouter':[858025468393816074,906130946426818571],'GunSlinger':[858025481579659315,906130991754649621]}
-jobs2 = {'Bard':[858025651956350996,906131139217997825],'Summoner':[858025696127221830,906131494353920030],'Arcana':[858025726552047646,906131534300463125],'Sorceress':[858025772413616150,906131568031055902],'Blade':[858025950793170984,906131680748769300],'Demonic':[858025848447434772,906131604886405120],'Reaper':[858026091452956722,906131723132235787],'Artist':[921874293397262346,921874430450348073]}
+jobs2 = {'Bard':[858025651956350996,906131139217997825],'Summoner':[858025696127221830,906131494353920030],'Arcana':[858025726552047646,906131534300463125],'Sorceress':[858025772413616150,906131568031055902],'Blade':[858025950793170984,906131680748769300],'Demonic':[858025848447434772,906131604886405120],'Reaper':[858026091452956722,906131723132235787],'Artist_':[921874293397262346,921874430450348073]}
 servers = {'1️⃣':858632883585810453,'2️⃣':882618750598279249,'3️⃣':858632832292487168,'4️⃣':868902014967488562,'5️⃣':858632859979612180,'6️⃣':858809645162561557,'7️⃣':878299316937191424,'8️⃣':878997499208151070}
 
 @bot.event
@@ -67,6 +67,7 @@ async def 캐릭터(ctx,text=None):
             elif em.name =="HolyKnight":
                 a[3] = em
         embed.add_field(name="슈사이어",value=f"{a[0]} 디스트로이어\n\n{a[1]} 워로드\n\n{a[2]} 버서커\n\n{a[3]} 홀리나이트",inline=True)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name == "BattleMaster":
                 a[0] = em
@@ -79,6 +80,7 @@ async def 캐릭터(ctx,text=None):
             elif em.name =="Striker":
                 a[4] = em
         embed.add_field(name="애니츠",value=f"{a[0]} 배틀마스터\n\n{a[1]} 인파이터\n\n{a[2]} 기공사\n\n{a[3]} 창술사\n\n{a[4]} 스트라이커",inline=True)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name == "DevilHunter":
                 a[0] = em
@@ -92,10 +94,12 @@ async def 캐릭터(ctx,text=None):
                 a[4] = em
         embed.add_field(name="아르덴타인",value=f"{a[0]} 데빌헌터\n\n{a[1]} 블래스터\n\n{a[2]} 호크아이\n\n{a[3]} 스카우터\n\n{a[4]} 건슬링어",inline=True)
         msg = await ctx.send(embed=embed)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name in str(jobs1):
                 await msg.add_reaction(em)
         embed = discord.Embed(title="본캐 직업Ⅱ",color=0xFFD700)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name == "Bard":
                 a[0] = em
@@ -106,6 +110,7 @@ async def 캐릭터(ctx,text=None):
             elif em.name =="Sorceress":
                 a[3] = em
         embed.add_field(name="실린",value=f"{a[0]} 바드\n\n{a[1]} 서머너\n\n{a[2]} 아르카나\n\n{a[3]} 소서리스",inline=True)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name == "Blade":
                 a[0] = em
@@ -114,15 +119,18 @@ async def 캐릭터(ctx,text=None):
             elif em.name == "Reaper":
                 a[2] = em
         embed.add_field(name="데런",value=f"{a[0]} 블레이드\n\n{a[1]} 데모닉\n\n{a[2]} 리퍼",inline=True)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
-            if em.name == "Artist":
+            if em.name == "Artist_":
                 a[0] = em
         embed.add_field(name="요즈",value=f"{a[0]} 도화가",inline=True)
         msg = await ctx.send(embed=embed)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name in str(jobs2):
                 await msg.add_reaction(em)
         embed = discord.Embed(title="부캐 직업Ⅰ",color=0xFFD700)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name == "Destroyer":
                 a[0] = em
@@ -133,6 +141,7 @@ async def 캐릭터(ctx,text=None):
             elif em.name =="HolyKnight":
                 a[3] = em
         embed.add_field(name="슈사이어",value=f"{a[0]} 디스트로이어\n\n{a[1]} 워로드\n\n{a[2]} 버서커\n\n{a[3]} 홀리나이트\n\n여버서커",inline=True)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name == "BattleMaster":
                 a[0] = em
@@ -145,6 +154,7 @@ async def 캐릭터(ctx,text=None):
             elif em.name =="Striker":
                 a[4] = em
         embed.add_field(name="애니츠",value=f"{a[0]} 배틀마스터\n\n{a[1]} 인파이터\n\n{a[2]} 기공사\n\n{a[3]} 창술사\n\n{a[4]} 스트라이커",inline=True)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name == "DevilHunter":
                 a[0] = em
@@ -158,10 +168,12 @@ async def 캐릭터(ctx,text=None):
                 a[4] = em
         embed.add_field(name="아르덴타인",value=f"{a[0]} 데빌헌터\n\n{a[1]} 블래스터\n\n{a[2]} 호크아이\n\n{a[3]} 스카우터\n\n{a[4]} 건슬링어",inline=True)
         msg = await ctx.send(embed=embed)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name in str(jobs1):
                 await msg.add_reaction(em)
         embed = discord.Embed(title="부캐 직업Ⅱ",color=0xFFD700)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name == "Bard":
                 a[0] = em
@@ -172,6 +184,7 @@ async def 캐릭터(ctx,text=None):
             elif em.name =="Sorceress":
                 a[3] = em
         embed.add_field(name="실린",value=f"{a[0]} 바드\n\n{a[1]} 서머너\n\n{a[2]} 아르카나\n\n{a[3]} 소서리스",inline=True)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name == "Blade":
                 a[0] = em
@@ -180,14 +193,17 @@ async def 캐릭터(ctx,text=None):
             elif em.name == "Reaper":
                 a[2] = em
         embed.add_field(name="데런",value=f"{a[0]} 블레이드\n\n{a[1]} 데모닉\n\n{a[2]} 리퍼",inline=True)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
-            if em.name == "Artist":
+            if em.name == "Artist_":
                 a[0] = em
         embed.add_field(name="요즈",value=f"{a[0]} 도화가",inline=True)
         msg = await ctx.send(embed=embed)
+        a = [0 for col in range(5)]
         for em in ctx.guild.emojis:
             if em.name in str(jobs2):
                 await msg.add_reaction(em)
+        await ctx.send("yes fixed")
     else:
         return None
     

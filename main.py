@@ -39,7 +39,7 @@ async def on_member_join(member):
 async def 말하기(ctx,text=None):
     if ctx.author.id == 262582555813871618:
         await ctx.send(text)
-        await ctx.message.delete
+        await ctx.message.delete()
     else:
         return None
 

@@ -38,12 +38,15 @@ async def on_member_join(member):
 @bot.command(aliases=['join'])
 async def 소환(ctx,text=None):
     if ctx.author.id == 262582555813871618:
-        channel = ctx.author.voice.channel
-        if channel == None:
-            return None
-        await channel.connect()
+        if ctx.author.voice:
+            channel = ctx.author.voice.channel
+            print(channel.name)
+            if channel == None:
+                return None
+            await channel.connect()
     else:
         return None
+
 @bot.command(aliases=['server'])
 async def 서버(ctx,text=None):
     if ctx.author.id == 262582555813871618:

@@ -11,6 +11,7 @@ bot=commands.Bot(command_prefix='./',intents = intents)
 jobs1 = {'Destroyer':[858024177097244692,906130095050194984],'WarLord':[858024416364855297,906130181066993686],'Berserker':[858024445038034944,906130245512466462],'HolyKnight':[858024470040412220,906130259374665728],'BattleMaster':[858024753180835891,906130412844232737],'infighter':[858024790383788063,906130449028501544],'SoulMater':[858025164129304607,906130482931068958],'LanceMaster':[858025187680976896,906130507476127764],'Striker':[858025214456496128,906130526870573056],'DevilHunter':[858025356111249408,906130842454212658],'Blaster':[858025430287515678,906130898729189406],'HawkEye':[858025451288395777,906130923999887410],'Scouter':[858025468393816074,906130946426818571],'GunSlinger':[858025481579659315,906130991754649621]}
 jobs2 = {'Bard':[858025651956350996,906131139217997825],'Summoner':[858025696127221830,906131494353920030],'Arcana':[858025726552047646,906131534300463125],'Sorceress':[858025772413616150,906131568031055902],'Blade':[858025950793170984,906131680748769300],'Demonic':[858025848447434772,906131604886405120],'Reaper':[858026091452956722,906131723132235787],'Artist_':[921874293397262346,921874430450348073]}
 servers = {'1️⃣':858632883585810453,'2️⃣':882618750598279249,'3️⃣':858632832292487168,'4️⃣':868902014967488562,'5️⃣':858632859979612180,'6️⃣':858809645162561557,'7️⃣':878299316937191424,'8️⃣':878997499208151070}
+parties = {'1️⃣':959104004225380412,'2️⃣':959104077147562034,'3️⃣':959104100841177178,'4️⃣':959104109988962324,'5️⃣':959104210379636756,'6️⃣':959104230671646740,'7️⃣':959104261579485214}
 
 @bot.event
 async def on_ready():
@@ -61,7 +62,21 @@ async def 서버(ctx,text=None):
         await msg.add_reaction("8️⃣")
     else:
         return None
-
+@bot.command(aliases=['party'])
+async def 파티(ctx,text=None):
+    if ctx.author.id == 262582555813871618:
+        embed = discord.Embed(title="파티",color=0xFFD700)
+        embed.add_field(name="파티",value=f":one: ①쿠크세이튼\n\n:two: ②쿠크세이튼\n\n:three: ③쿠크세이튼\n\n:four: ④쿠크세이튼\n\n:five: ①아브렐슈드12\n\n:six: ①아브렐슈드34\n\n:seven: ①아브렐슈드56",inline=True)
+        msg = await ctx.send(embed=embed)
+        await msg.add_reaction("1️⃣")
+        await msg.add_reaction("2️⃣")
+        await msg.add_reaction("3️⃣")
+        await msg.add_reaction("4️⃣")
+        await msg.add_reaction("5️⃣")
+        await msg.add_reaction("6️⃣")
+        await msg.add_reaction("7️⃣")
+    else:
+        return None
 @bot.command(aliases=['character'])
 async def 캐릭터(ctx,text=None):
     if ctx.author.id == 262582555813871618:
@@ -264,6 +279,12 @@ async def on_raw_reaction_add(reaction):
                 for ro in roles:
                     if ro.id == servers[server]:
                         await user.add_roles(ro)
+    elif "파티" in title:
+        for party in parties.keys() :
+            if str(reaction.emoji.name) == party:
+                for ro in roles:
+                    if ro.id == parties[party]:
+                        await user.add_roles(ro)
 
 @bot.event
 async def on_raw_reaction_remove(reaction):
@@ -317,5 +338,11 @@ async def on_raw_reaction_remove(reaction):
             if str(reaction.emoji.name) == server:
                 for ro in roles:
                     if ro.id == servers[server]:
+                        await user.remove_roles(ro)
+    elif "파티" in title:
+        for party in parties.keys() :
+            if str(reaction.emoji.name) == party:
+                for ro in roles:
+                    if ro.id == parties[party]:
                         await user.remove_roles(ro)
 bot.run(Token)

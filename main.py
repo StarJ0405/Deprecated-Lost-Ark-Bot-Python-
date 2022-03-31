@@ -203,7 +203,6 @@ async def 캐릭터(ctx,text=None):
         for em in ctx.guild.emojis:
             if em.name in str(jobs2):
                 await msg.add_reaction(em)
-        await ctx.send("yes fixed")
     else:
         return None
     

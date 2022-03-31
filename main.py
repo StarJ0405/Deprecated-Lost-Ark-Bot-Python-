@@ -36,11 +36,10 @@ async def on_member_join(member):
     await channel.send(f"{member.mention}서버에 입장하신것을 환영합니다. {channel.mention} 부탁드립니다.")
 
 @bot.command(aliases=['join'])
-async def 소환(ctx,text=None):
+async def 소환(ctx):
     if ctx.author.id == 262582555813871618:
         if ctx.author.voice:
             channel = ctx.author.voice.channel
-            print(channel.name)
             if channel == None:
                 return None
             await channel.connect()

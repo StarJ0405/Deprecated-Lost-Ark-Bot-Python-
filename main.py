@@ -1,8 +1,9 @@
 import discord
 from discord.ext import commands
-from key import Token
+#from key import Token
 import random
 
+Token = os.environ.get('Token')
 intents = discord.Intents.default()
 intents.members = True
 bot=commands.Bot(command_prefix='./',intents = intents)

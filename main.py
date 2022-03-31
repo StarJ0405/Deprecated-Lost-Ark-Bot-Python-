@@ -36,8 +36,10 @@ async def on_member_join(member):
     await channel.send(f"{member.mention}서버에 입장하신것을 환영합니다. {channel.mention} 부탁드립니다.")
 
 @bot.command(aliases=['say'])
-async def 말하기(ctx,text=None):
+async def 말하기(ctx,*text=None):
     if ctx.author.id == 262582555813871618:
+        if text ==None:
+            return None
         await ctx.send(text)
         await ctx.message.delete()
     else:

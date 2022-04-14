@@ -75,7 +75,7 @@ async def task_loop():
                     if not user.bot:
                         mention += user.mention
                     mention += ""
-            await msg.channel.send(mention+timer.gettext() +"오늘 레이드가 있는 날이에요! 안까먹었죠?")
+            await msg.channel.send(mention +"\n오늘 레이드가 있는 날이에요! 안까먹었죠?\n"+timer.gettext())
         elif dif < timedelta(minutes=10) and dif > timedelta(minutes=9,seconds=59):
             mention = ""
             msg = timer.getmsg()
@@ -87,7 +87,7 @@ async def task_loop():
                     if not user.bot:
                         mention += user.mention
                     mention += ""
-            await msg.channel.send(mention+timer.gettext() +"레이드 10분 전! 늦으면 머머리")
+            await msg.channel.send(mention+"\n레이드 10분 전! 늦으면 머머리\n"+timer.gettext())
         elif dif < timedelta(seconds=1):
             if not timer.isrepeat():
                 dellist.append(timer)
@@ -101,7 +101,7 @@ async def task_loop():
                     if not user.bot:
                         mention += user.mention
                     mention += ""
-            await msg.channel.send(mention+timer.gettext() +"레이드 시간입니다. 모두 모여주세요!")
+            await msg.channel.send(mention +"\n레이드 시간입니다. 모두 모여주세요!\n"+timer.gettext())
     for dell in dellist:
         msg = dell.getmsg()
         if msg is not None:
@@ -120,7 +120,9 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
     if "추가" in types:
         time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M')
         if time is not None:
-            msg = await ctx.send(f"{time}시간에 레이드가 예약되었습니다. {ctx.channel.mention}\n{text}\n매주 반복 : {repeat}")
+            embed = discord.Embed(title="레이드 예약",color=0xFFD700)
+            embed.add_field(name=f"{ctx.channel.mention}",value=f"{time}시간에 레이드가 예약되었습니다. {ctx.channel.mention}\n{text}\n매주 반복 : {repeat}",inline=True)
+            msg = await ctx.send(embed=embed)
             if msg is not None:
                 timers.append(info(time,msg,text,repeat))
     elif "목록" in types:

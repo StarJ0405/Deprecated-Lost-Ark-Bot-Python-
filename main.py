@@ -129,6 +129,9 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
             msg = await ctx.send(embed=embed)
             if msg is not None:
                 timers.append(info(time,msg,text,repeat))
+        else:
+            await ctx.send("%도움말")
+            return None
     elif "목록" in types:
         num = 0
         msg = ""
@@ -141,6 +144,7 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
             await ctx.send(msg)
         else:
             await ctx.send("예약된 알람이 없습니다.")
+            return None
     elif "제거" in types:
         if datetime is not None and datetime >= 0 and datetime < len(timers):
             msg = timers[datetime].getmsg()
@@ -148,8 +152,11 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
                 await msg.delete()
             del timers[datetime]
             await ctx.send(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
+        else:
+            await ctx.send("%도움말")
+            return None
     else:
-        ctx.send("%도움말")
+        await ctx.send("%도움말")
     await ctx.message.delete()
 
 @bot.command(aliases=['say'])

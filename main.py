@@ -120,7 +120,7 @@ async def 도움말(ctx):
     await ctx.send(embed=embed)
 
 @bot.command(aliases=['reservation','res'])
-async def 예약(ctx,types=None, datetime, repeat=False, *, text="빈 텍스트"):
+async def 예약(ctx,types, datetime, repeat=False, *, text="빈 텍스트"):
     if "추가" in types:
         time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M')
         if time is not None:

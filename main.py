@@ -45,7 +45,7 @@ async def task_loop():
 @bot.command(aliases=['help'])
 async def 도움말(ctx):
     embed = discord.Embed(title="명령어",color=0xFFD700)
-    embed.add_field(name="도움말",value=f"/예약 월-일",inline=True)
+    embed.add_field(name="도움말",value="/예약 월-일",inline=True)
     await ctx.send(embed=embed)
 
 @bot.command(aliases=['reservation','res'])

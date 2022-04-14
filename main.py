@@ -149,7 +149,6 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
         if  datetime is not None and type(datetime) is str:
             datetime = int(datetime)
         if datetime >= 0 and datetime < len(timers):
-            print("act??")
             msg = timers[datetime].getmsg()
             if msg is not None:
                 await msg.delete()

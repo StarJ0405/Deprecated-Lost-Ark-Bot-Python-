@@ -69,7 +69,7 @@ async def task_loop():
     for dell in dellist:
         msg = dell.getmsg()
         if msg is not None:
-            msg.delete()
+            await msg.delete()
         timers.remove(dell)
         print(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
 
@@ -103,7 +103,7 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
         if datetime is not None and datetime >= 0 and datetime < len(timers):
             msg = timers[datetime].getmsg()
             if msg is not None:
-                msg.delete()
+                await msg.delete()
             del timers[datetime]
             await ctx.send(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
     else:

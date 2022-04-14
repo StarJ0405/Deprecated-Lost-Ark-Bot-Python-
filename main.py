@@ -42,15 +42,17 @@ async def on_member_join(member):
 async def task_loop():
     print(date.datetime.now())
 
-@bot.command()
+@bot.command(aliases=['helps'])
 async def 도움말(ctx):
     embed = discord.Embed(title="명령어",color=0xFFD700)
-    embed.add_field(name="도움말",value="/예약 월-일",inline=True)
+    embed.add_field(name="도움말",value=f"/예약 목록\n/예약 년-월-일-시-분 \예약메시지\" ",inline=True)
     await ctx.send(embed=embed)
 
 @bot.command(aliases=['reservation','res'])
 async def 예약(ctx, datetime, *, text=None):
-    await ctx.send(datetime.count('-'))
+    key = "%y년%m월%d일"
+    time = date.datetime.strptime(datetime,key).date()
+    await ctx.send(time)
 
 @bot.command(aliases=['say'])
 async def 말하기(ctx,*,text=None):

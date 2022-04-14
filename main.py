@@ -65,8 +65,6 @@ async def task_loop():
         if res < now:
             dellist.append(timer)
         elif dif < timedelta(days=1) and dif > timedelta(hours=23,minutes=59,seconds=59):
-            if not timer.isrepeat():
-                dellist.append(timer)
             mention = ""
             msg = timer.getmsg()
             for cached in bot.cached_messages:
@@ -79,8 +77,6 @@ async def task_loop():
                     mention += ""
             await msg.channel.send(mention+timer.gettext() +"오늘 레이드가 있는 날이에요! 안까먹었죠?")
         elif dif < timedelta(minutes=10) and dif > timedelta(minutes=9,seconds=59):
-            if not timer.isrepeat():
-                dellist.append(timer)
             mention = ""
             msg = timer.getmsg()
             for cached in bot.cached_messages:
@@ -124,7 +120,7 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
     if "추가" in types:
         time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M')
         if time is not None:
-            msg = await ctx.send(f"{time}")
+            msg = await ctx.send(f"{time}시간에 레이드가 예약되었습니다. {ctx.channel.mention}\n{text}\n매주 반복 : {repeat}")
             if msg is not None:
                 timers.append(info(time,msg,text,repeat))
     elif "목록" in types:

@@ -55,12 +55,9 @@ async def on_member_join(member):
 async def task_loop():
     for timer in timers:
         print("yes act!")
-        print(timer)
-        '''
+        print(timer.getdatetime())
         print(timer.getdatetime() - date.datetime.now())
         print(timer.isrepeat())
-        '''
-        
 
 @bot.command(aliases=['helps'])
 async def 도움말(ctx):

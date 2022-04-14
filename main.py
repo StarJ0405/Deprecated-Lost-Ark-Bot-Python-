@@ -18,7 +18,7 @@ tasks = []
 class info:
     datetime = None
     msg = None
-    repeat = Fasle
+    repeat = False
     def __init__(self,datetime,msg,repeat=False):
         self.datetime=datetime
         self.msg=msg

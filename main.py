@@ -68,6 +68,7 @@ async def task_loop():
                 dellist.append(timer)
             mention = ""
             msg = timer.getmsg()
+            print(msg.reactions)
             for reaction in msg.reactions:
                 print("rec")
                 if reaction.me:

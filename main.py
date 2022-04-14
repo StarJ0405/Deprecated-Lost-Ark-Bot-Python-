@@ -66,13 +66,13 @@ async def task_loop():
         elif res - now < timedelta(seconds=1):
             if not timer.isrepeat():
                 dellist.append(timer)
-        mention = ""
-        msg = timer.getmsg()
-        for reaction in msg.reactions:
-            if reaction.me:
-                for user in reaction.uesrs():
-                    mention += user.mention
-        await msg.channel.send(mention+" "+timer.gettext())
+            mention = ""
+            msg = timer.getmsg()
+            for reaction in msg.reactions:
+                if reaction.me:
+                    for user in reaction.uesrs():
+                        mention += user.mention
+            await msg.channel.send(mention+" "+timer.gettext())
     for dell in dellist:
         msg = dell.getmsg()
         if msg is not None:

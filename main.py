@@ -125,7 +125,7 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
         time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M')
         if time is not None:
             embed = discord.Embed(title="레이드 예약",color=0xFFD700)
-            embed.add_field(name=ctx.channel.mention,value=f"{time}시간에 레이드가 예약되었습니다. {ctx.channel.mention}\n{text}\n매주 반복 : {repeat}",inline=True)
+            embed.add_field(name=ctx.channel.name,value=f"{ctx.channel.mention}\n{time}시간에 레이드가 예약되었습니다.\n{text}\n매주 반복 : {repeat}",inline=True)
             msg = await ctx.send(embed=embed)
             if msg is not None:
                 timers.append(info(time,msg,text,repeat))

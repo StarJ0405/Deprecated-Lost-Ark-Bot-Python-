@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 #from key import Token
 import random
 import os
@@ -7,7 +7,7 @@ import os
 Token = os.environ.get('Token')
 intents = discord.Intents.default()
 intents.members = True
-bot=commands.Bot(command_prefix='./',intents = intents)
+bot=commands.Bot(command_prefix='%',intents = intents)
 jobs1 = {'Destroyer':[858024177097244692,906130095050194984],'WarLord':[858024416364855297,906130181066993686],'Berserker':[858024445038034944,906130245512466462],'HolyKnight':[858024470040412220,906130259374665728],'BattleMaster':[858024753180835891,906130412844232737],'infighter':[858024790383788063,906130449028501544],'SoulMater':[858025164129304607,906130482931068958],'LanceMaster':[858025187680976896,906130507476127764],'Striker':[858025214456496128,906130526870573056],'DevilHunter':[858025356111249408,906130842454212658],'Blaster':[858025430287515678,906130898729189406],'HawkEye':[858025451288395777,906130923999887410],'Scouter':[858025468393816074,906130946426818571],'GunSlinger':[858025481579659315,906130991754649621]}
 jobs2 = {'Bard':[858025651956350996,906131139217997825],'Summoner':[858025696127221830,906131494353920030],'Arcana':[858025726552047646,906131534300463125],'Sorceress':[858025772413616150,906131568031055902],'Blade':[858025950793170984,906131680748769300],'Demonic':[858025848447434772,906131604886405120],'Reaper':[858026091452956722,906131723132235787],'Artist_':[921874293397262346,921874430450348073]}
 servers = {'1️⃣':858632883585810453,'2️⃣':882618750598279249,'3️⃣':858632832292487168,'4️⃣':868902014967488562,'5️⃣':858632859979612180,'6️⃣':858809645162561557,'7️⃣':878299316937191424,'8️⃣':878997499208151070}
@@ -18,7 +18,12 @@ async def on_ready():
     print('봇이 작동 시도중입니다.')
     print(f"봇={bot.user.name} 연결중")
     print('연결이 완료되었습니다.')
+    task_loop.start()
     await bot.change_presence(status=discord.Status.online, activity=None)
+
+@tasks.loop(seconds=60)
+async def task_loop():
+    print("예!! 잘 작동한다.")
 
 @bot.event
 async def on_command_error(ctx,error):
@@ -30,7 +35,7 @@ async def on_member_join(member):
     guild = member.guild
     channel = None
     for tc in guild.text_channels:
-        if tc.id == 959063025111937065:
+        if tc.id == 932908858354044928:
             channel = tc
     if channel == None:
         return None
@@ -62,6 +67,7 @@ async def 서버(ctx,text=None):
         await msg.add_reaction("8️⃣")
     else:
         return None
+
 @bot.command(aliases=['party'])
 async def 파티(ctx,text=None):
     if ctx.author.id == 262582555813871618:
@@ -77,6 +83,7 @@ async def 파티(ctx,text=None):
         await msg.add_reaction("7️⃣")
     else:
         return None
+
 @bot.command(aliases=['character'])
 async def 캐릭터(ctx,text=None):
     if ctx.author.id == 262582555813871618:

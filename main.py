@@ -58,9 +58,9 @@ async def on_member_join(member):
 async def task_loop():
     for timer in timers:
         print("yes act!")
-        print(timer.getdatetime())
-        print(timer.getdatetime() - date.datetime.now())
-        print(timer.isrepeat())
+        'print(timer.getdatetime())
+        'print(timer.getdatetime() - date.datetime.now())
+        'print(timer.isrepeat())
         
 
 @bot.command(aliases=['helps'])
@@ -72,19 +72,11 @@ async def 도움말(ctx):
 @bot.command(aliases=['reservation','res'])
 async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍스트"):
     if "추가" in types:
-        print("추가")
-        time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M').date()
-        print(datetime)
-        print(time)
+        time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M')
         if time is not None:
-            print("not time None")
             msg = await ctx.send(f"{time}")
-            print("message?")
-            print(msg)
             if msg is not None:
-                print("not msg None")
                 timers.append(info(time,msg,repeat))
-                print(timers)
     elif "목록" in types:
         print("목록")
         print(timers)

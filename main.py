@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands, tasks
+from datetime as date
 #from key import Token
 import random
 import os
@@ -23,7 +24,7 @@ async def on_ready():
 
 @tasks.loop(seconds=60)
 async def task_loop():
-    print("예!! 잘 작동한다.")
+    print(date.datetime.now())
 
 @bot.event
 async def on_command_error(ctx,error):

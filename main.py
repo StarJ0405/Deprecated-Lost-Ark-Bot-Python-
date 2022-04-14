@@ -146,15 +146,9 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
             await ctx.send("예약된 알람이 없습니다.")
             return None
     elif "제거" in types:
-        print("act!!!!!!!2")
-        print(datetime)
-        print(type(datetime))
-        print("1")
-        print(datetime is not None)
-        print("2")
-        if datetime >= 0:
-            print("3")
-        if datetime is not None and datetime >= 0 and datetime < len(timers):
+        if  datetime is not None and type(datetime) is int:
+            datetime = int(datetime)
+        if datetime >= 0 and datetime < len(timers):
             print("act??")
             msg = timers[datetime].getmsg()
             if msg is not None:

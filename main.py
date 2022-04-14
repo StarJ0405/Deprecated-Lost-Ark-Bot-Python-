@@ -108,6 +108,7 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
             await ctx.send(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
     else:
         ctx.send("%도움말")
+    await ctx.message.delete()
 
 @bot.command(aliases=['say'])
 async def 말하기(ctx,*,text=None):

@@ -16,9 +16,6 @@ parties = {'1️⃣':959104004225380412,'2️⃣':959104077147562034,'3️⃣':9
 timers = []
 
 class info:
-    datetime = None
-    msg = None
-    repeat = False
     def __init__(self,datetime,msg,repeat=False):
         self.datetime=datetime
         self.msg=msg

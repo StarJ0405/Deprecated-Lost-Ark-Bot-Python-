@@ -72,8 +72,8 @@ async def task_loop():
                 if cached.id == msg.id:
                     msg = cached
             for reaction in msg.reactions:
-                print(reaction.users())
                 users = await reaction.uesrs()
+                print(users)
                 for user in users:
                     if not user.bot:
                         mention += user.mention

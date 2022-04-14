@@ -67,7 +67,10 @@ async def task_loop():
             if not timer.isrepeat():
                 dellist.append(timer)
             mention = ""
-            msg = discord.utils.get(bot.messages, id=timer.getmsg().id)
+            msg = timer.getmsg()
+            for cached in client.cached_messages:
+                if cached.id == msg.id:
+                    msg = cached
             print(msg.reactions)
             for reaction in msg.reactions:
                 print("rec")

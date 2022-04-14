@@ -17,15 +17,15 @@ timers = []
 
 class info:
     def __init__(self,datetime,msg,repeat=False):
-        self.datetime=datetime
-        self.msg=msg
-        self.repeat = repeat
+        self.__datetime=datetime
+        self.__msg=msg
+        self.__repeat = repeat
     def getdatetime(self):
-        return datetime
+        return self.__datetime
     def getmsg(self):
-        return msg
+        return self.__msg
     def isrepeat(self):
-        return repeat
+        return self.__repeat
     
 @bot.event
 async def on_ready():

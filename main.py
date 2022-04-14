@@ -69,8 +69,11 @@ async def task_loop():
             mention = ""
             msg = timer.getmsg()
             for reaction in msg.reactions:
+                print("rec")
                 if reaction.me:
+                    print("user..?")
                     for user in reaction.uesrs():
+                        print("zero..?")
                         mention += user.mention
             await msg.channel.send(mention+" "+timer.gettext())
     for dell in dellist:

@@ -66,8 +66,10 @@ async def task_loop():
         elif res - now < timedelta(seconds=1):
             if not timer.isrepeat():
                 dellist.append(timer)
-            print("와 시간이에요!")
     for dell in dellist:
+        msg = dell.getmsg()
+        if msg is not None:
+            msg.delete()
         timers.remove(dell)
         print(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
 
@@ -99,6 +101,9 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
             ctx.send("예약된 알람이 없습니다.")
     elif "제거" in types:
         if datetime is not None and datetime >= 0 and datetime < len(timers):
+            msg = timers[datetime].getmsg()
+            if msg is not None:
+                msg.delete()
             del timers[datetime]
             await ctx.send(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
     else:

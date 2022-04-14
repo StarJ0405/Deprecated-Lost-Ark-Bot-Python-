@@ -77,9 +77,11 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
         print(datetime)
         print(time)
         if time != None:
+            print("not time None")
             msg = await ctx.send(f"{time} {time.hour}: {time.minute}")
             if msg != None:
-                tasks.append(info(time,msg,repeat))
+                print("not msg None")
+                timers.append(info(time,msg,repeat))
                 print(timers)
     elif "목록" in types:
         print("목록")

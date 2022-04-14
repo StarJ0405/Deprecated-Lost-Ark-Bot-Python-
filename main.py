@@ -42,7 +42,7 @@ async def on_member_join(member):
 async def task_loop():
     print(date.datetime.now())
 
-@bot.command(aliases=['say'])
+@bot.command(aliases=['reservation','res'])
 async def 예약(ctx, datetime, *, text=None):
     await ctx.send(datetime)
     awit ctx.send(text)

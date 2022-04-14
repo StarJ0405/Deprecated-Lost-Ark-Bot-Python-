@@ -121,7 +121,7 @@ async def 도움말(ctx):
 
 @bot.command(aliases=['reservation','res'])
 async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍스트"):
-    if types is not None and "추가" in types:
+    if "추가" in types:
         time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M')
         if time is not None:
             embed = discord.Embed(title="레이드 예약",color=0xFFD700)
@@ -146,7 +146,7 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
             await ctx.send("예약된 알람이 없습니다.")
             return None
     elif "제거" in types:
-        print("act!!!!!!!")
+        print("act!!!!!!!2")
         print(datetime)
         print("1")
         print(datetime is not None)

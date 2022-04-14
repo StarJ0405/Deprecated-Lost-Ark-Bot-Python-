@@ -56,11 +56,17 @@ async def on_member_join(member):
 
 @tasks.loop(seconds=10)
 async def task_loop():
+    dellist = []
     for timer in timers:
-        print("yes act!")
-        print(timer.getdatetime())
-        print(timer.getdatetime() - date.datetime.now())
-        print(timer.isrepeat())
+        now = date.datetime.now()
+        res = timer.getdatetime()
+        if res < now:
+            dellist.append(timer)
+        elif res == now:
+            if !timer.isrepeat():
+                dellist.appen(timer)
+    for dell in dellist:
+        timers.remove(dell)
 
 @bot.command(aliases=['helps'])
 async def 도움말(ctx):
@@ -86,7 +92,7 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
             num+=1
         await ctx.send(msg)
     elif "제거" in types:
-        if datetime is not None and datetime > 0 and datetime < len(timers):
+        if datetime is not None and datetime >= 0 and datetime < len(timers):
             del timers[datetime]
     else:
         ctx.send("%도움말")

@@ -66,6 +66,7 @@ async def task_loop():
         elif res - now < timedelta(seconds=1):
             if not timer.isrepeat():
                 dellist.append(timer)
+        await timer.getmsg().channel.send(timer.gettext())
     for dell in dellist:
         msg = dell.getmsg()
         if msg is not None:

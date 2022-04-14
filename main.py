@@ -55,7 +55,7 @@ async def on_member_join(member):
         return None
     await channel.send(f"{member.mention}서버에 입장하신것을 환영합니다. {channel.mention} 부탁드립니다.")
 
-@tasks.loop(seconds=10)
+@tasks.loop(seconds=1)
 async def task_loop():
     dellist = []
     for timer in timers:
@@ -63,15 +63,13 @@ async def task_loop():
         res = timer.getdatetime() 
         if res < now:
             dellist.append(timer)
-        elif res == now:
+        elif res - now < timedelta(seconds=1)):
             if not timer.isrepeat():
                 dellist.appen(timer)
-        print("why?")
-        print(res)
-        print(now)
+            print("와 시간이에요!")
     for dell in dellist:
         timers.remove(dell)
-        print(f"{dell} is removed ")
+        print(f"{dell.getdatetime()} - {dell.gettext()} is removed ")
 
 @bot.command(aliases=['helps'])
 async def 도움말(ctx):

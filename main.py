@@ -73,7 +73,7 @@ async def task_loop():
                     msg = cached
             for reaction in msg.reactions:
                 print(reaction.users())
-                for user in reaction.users():
+                async for user in reaction.users():
                     if not user.bot:
                         mention += user.mention
                     mention += ""

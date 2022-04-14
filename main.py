@@ -68,7 +68,7 @@ async def task_loop():
                 dellist.append(timer)
             mention = ""
             msg = timer.getmsg()
-            for cached in discord.Client.cached_messages:
+            for cached in bot.cached_messages:
                 if cached.id == msg.id:
                     msg = cached
             print(msg.reactions)

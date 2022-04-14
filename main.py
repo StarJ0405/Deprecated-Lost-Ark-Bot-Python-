@@ -69,7 +69,7 @@ async def task_loop():
             print("와 시간이에요!")
     for dell in dellist:
         timers.remove(dell)
-        print(f"{dell.getdatetime()} - {dell.gettext()} is removed ")
+        print(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
 
 @bot.command(aliases=['helps'])
 async def 도움말(ctx):
@@ -88,15 +88,19 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
     elif "목록" in types:
         num = 0
         msg = ""
-        for time in timers:
-            if msg != "":
-                msg +="\n"
-            msg += str(num) + " : [" + str(time.getdatetime()) +"] - "+ time.gettext()
-            num+=1
-        await ctx.send(msg)
+        if len(timers) > 0:
+            for time in timers:
+                if msg != "":
+                    msg +="\n"
+                msg += str(num) + " : [" + str(time.getdatetime()) +"] - "+ time.gettext()
+                num+=1
+            await ctx.send(msg)
+        else:
+            ctx.send("예약된 알람이 없습니다.")
     elif "제거" in types:
         if datetime is not None and datetime >= 0 and datetime < len(timers):
             del timers[datetime]
+            await ctx.send(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
     else:
         ctx.send("%도움말")
 

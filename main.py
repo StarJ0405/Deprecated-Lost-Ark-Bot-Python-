@@ -16,16 +16,19 @@ parties = {'1️⃣':959104004225380412,'2️⃣':959104077147562034,'3️⃣':9
 timers = []
 
 class info:
-    def __init__(self,datetime,msg,repeat=False):
-        self.__datetime=datetime
-        self.__msg=msg
+    def __init__(self,datetime,msg,text,repeat=False):
+        self.__datetime = datetime
+        self.__msg = msg
         self.__repeat = repeat
+        self.__text=text
     def getdatetime(self):
         return self.__datetime
     def getmsg(self):
         return self.__msg
     def isrepeat(self):
         return self.__repeat
+    def gettext(self):
+        return self.__text
     
 @bot.event
 async def on_ready():
@@ -72,10 +75,13 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
         if time is not None:
             msg = await ctx.send(f"{time}")
             if msg is not None:
-                timers.append(info(time,msg,repeat))
+                timers.append(info(time,msg,text,repeat))
     elif "목록" in types:
-        print("목록")
-        print(timers)
+        num = 0
+        msg = ""
+        for time in timers:
+            msg = str(num) + str(time.getdatetime()) + time.gettext()
+        ctx.send(msg)
     elif "제거" in types:
         print("제거")
     else:

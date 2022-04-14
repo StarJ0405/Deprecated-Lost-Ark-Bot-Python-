@@ -65,6 +65,9 @@ async def task_loop():
         elif res == now:
             if not timer.isrepeat():
                 dellist.appen(timer)
+        print("why?")
+        print(res)
+        print(now)
     for dell in dellist:
         timers.remove(dell)
         print(f"{dell} is removed ")

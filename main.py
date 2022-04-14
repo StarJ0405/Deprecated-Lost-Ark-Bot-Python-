@@ -70,7 +70,7 @@ async def 도움말(ctx):
     await ctx.send(embed=embed)
 
 @bot.command(aliases=['reservation','res'])
-async def 예약(ctx,types, datetime, repeat, *, text="빈 텍스트"):
+async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍스트"):
     if "추가" in types:
         print("추가")
         time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M').date()
@@ -84,6 +84,8 @@ async def 예약(ctx,types, datetime, repeat, *, text="빈 텍스트"):
         print(timers)
     elif "제거" in types:
         print("제거")
+    else:
+        ctx.send("%도움말")
 
 @bot.command(aliases=['say'])
 async def 말하기(ctx,*,text=None):

@@ -147,8 +147,9 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
             return None
     elif "제거" in types:
         print("act!!!!!!!")
+        print(datetime)
         print(datetime is not None)
-        print(datetime is not None)
+        print(datetime >= 0)
         print(datetime < len(timers))
         if datetime is not None and datetime >= 0 and datetime < len(timers):
             print("act??")

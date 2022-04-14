@@ -69,7 +69,7 @@ async def task_loop():
     for dell in dellist:
         msg = dell.getmsg()
         if msg is not None:
-            await msg.edit("종료된 알람")
+            await msg.edit(content="종료된 알람")
         timers.remove(dell)
         print(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
 

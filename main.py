@@ -67,7 +67,7 @@ async def task_loop():
             if not timer.isrepeat():
                 dellist.append(timer)
             mention = ""
-            msg = discord.utils.get(bot.messages, id=timger.getmsg().id)
+            msg = discord.utils.get(bot.messages, id=timer.getmsg().id)
             print(msg.reactions)
             for reaction in msg.reactions:
                 print("rec")

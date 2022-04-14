@@ -74,6 +74,7 @@ async def task_loop():
             print(msg.reactions)
             for reaction in msg.reactions:
                 print("rec")
+                print(reaction.me)
                 if reaction.me:
                     print("user..?")
                     for user in reaction.uesrs():

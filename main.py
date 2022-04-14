@@ -45,7 +45,7 @@ async def task_loop():
 @bot.command(aliases=['reservation','res'])
 async def 예약(ctx, datetime, *, text=None):
     await ctx.send(datetime)
-    awit ctx.send(text)
+    await ctx.send(text)
     return None
 
 @bot.command(aliases=['say'])

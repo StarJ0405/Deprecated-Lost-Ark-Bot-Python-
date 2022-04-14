@@ -120,7 +120,7 @@ async def 도움말(ctx):
     await ctx.send(embed=embed)
 
 @bot.command(aliases=['reservation','res'])
-async def 예약(ctx,types, datetime, repeat=False, *, text="빈 텍스트"):
+async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍스트"):
     if "추가" in types:
         time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M')
         if time is not None:
@@ -148,12 +148,12 @@ async def 예약(ctx,types, datetime, repeat=False, *, text="빈 텍스트"):
     elif "제거" in types:
         print("act!!!!!!!2")
         print(datetime)
+        print(type(datetime))
         print("1")
         print(datetime is not None)
         print("2")
-        '''print(datetime >= 0)'''
-        print("3")
-        print(datetime < len(timers))
+        if datetime >= 0:
+            print("3")
         if datetime is not None and datetime >= 0 and datetime < len(timers):
             print("act??")
             msg = timers[datetime].getmsg()

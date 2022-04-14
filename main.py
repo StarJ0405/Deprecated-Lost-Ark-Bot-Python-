@@ -56,11 +56,11 @@ async def on_member_join(member):
 
 @tasks.loop(seconds=10)
 async def task_loop():
-    for task in tasks
+    for task in tasks:
         print("yes act!")
-        'print(task.getdatetime())
-        'print(task.getdatetime() - date.datetime.now())
-        'print(task.isrepeat())
+        print(task.getdatetime())
+        print(task.getdatetime() - date.datetime.now())
+        print(task.isrepeat())
         
 
 @bot.command(aliases=['helps'])

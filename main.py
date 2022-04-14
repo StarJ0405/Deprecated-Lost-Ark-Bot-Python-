@@ -80,7 +80,9 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
         num = 0
         msg = ""
         for time in timers:
-            msg = str(num) + str(time.getdatetime()) + time.gettext()
+            if msg != "":
+                msg +="\n"
+            msg += str(num) + " : [" + str(time.getdatetime()) +"]"+ time.gettext()
         await ctx.send(msg)
     elif "제거" in types:
         print("제거")

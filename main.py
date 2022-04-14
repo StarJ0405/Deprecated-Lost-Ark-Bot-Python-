@@ -13,7 +13,22 @@ jobs1 = {'Destroyer':[858024177097244692,906130095050194984],'WarLord':[85802441
 jobs2 = {'Bard':[858025651956350996,906131139217997825],'Summoner':[858025696127221830,906131494353920030],'Arcana':[858025726552047646,906131534300463125],'Sorceress':[858025772413616150,906131568031055902],'Blade':[858025950793170984,906131680748769300],'Demonic':[858025848447434772,906131604886405120],'Reaper':[858026091452956722,906131723132235787],'Artist_':[921874293397262346,921874430450348073]}
 servers = {'1️⃣':858632883585810453,'2️⃣':882618750598279249,'3️⃣':858632832292487168,'4️⃣':868902014967488562,'5️⃣':858632859979612180,'6️⃣':858809645162561557,'7️⃣':878299316937191424,'8️⃣':878997499208151070}
 parties = {'1️⃣':959104004225380412,'2️⃣':959104077147562034,'3️⃣':959104100841177178,'4️⃣':959104109988962324,'5️⃣':959104210379636756,'6️⃣':959104230671646740,'7️⃣':959104261579485214}
-timers = {}
+tasks = []
+
+class info:
+    datetime = None
+    msg = None
+    repeat = Fasle
+    def __init__(self,datetime,msg,repeat=False):
+        self.datetime=datetime
+        self.msg=msg
+        self.repeat = repeat
+    def getdatetime(self):
+        return datetime
+    def getmsg(self):
+        return msg
+    def isrepeat(self):
+        return repeat
 
 @bot.event
 async def on_ready():
@@ -38,21 +53,29 @@ async def on_member_join(member):
     if channel == None:
         return None
     await channel.send(f"{member.mention}서버에 입장하신것을 환영합니다. {channel.mention} 부탁드립니다.")
-@tasks.loop(seconds=60)
+
+@tasks.loop(seconds=10)
 async def task_loop():
-    print(date.datetime.now())
+    for task in tasks
+        print("yes act!")
+        print(task.getdatetime().datetime)
+        print(task.getdatetime().datetime.timedelta)
+        
 
 @bot.command(aliases=['helps'])
 async def 도움말(ctx):
     embed = discord.Embed(title="명령어",color=0xFFD700)
     embed.add_field(name="도움말",value=f"%예약 목록\n%예약 [년-월-일-시-분] \"예약메시지\"\n예시) %예약 2022-04-14-13-30 꾸끄혜일튼 빠르게 녹일 사람들 구합니다.",inline=True)
-    msg = await ctx.send(embed=embed)
+    await ctx.send(embed=embed)
 
 @bot.command(aliases=['reservation','res'])
 async def 예약(ctx, datetime, *, text=None):
-    key = "%Y년%m월%d일"
+    key = "%Y-%m-%d-%H-%M"
     time = date.datetime.strptime(datetime,key).date()
-    await ctx.send(time)
+    if time != None:
+        msg = await ctx.send(time)
+        if msg != None:
+            tasks.append(info(time,msg))
 
 @bot.command(aliases=['say'])
 async def 말하기(ctx,*,text=None):

@@ -66,7 +66,7 @@ async def task_loop():
 @bot.command(aliases=['helps'])
 async def 도움말(ctx):
     embed = discord.Embed(title="명령어",color=0xFFD700)
-    embed.add_field(name="도움말",value=f"%예약 목록\n%예약 추가 [년-월-일-시-분] [반복=True/1회용=False] \"예약메시지\"\n예시) %예약 추가 2022-04-14-13-30 False 꾸끄혜일튼 빠르게 녹일 사람들 구합니다.\n%예약 삭제 [번호] - 번호는 목록에서 참조",inline=True)
+    embed.add_field(name="도움말",value=f"%예약 목록\n%예약 추가 [년-월-일-시-분] [반복=True/1회용=False] \"예약메시지\"\n예시) %예약 추가 2022-04-14-13-30 False 꾸끄혜일튼 귀살대 모집합니다.\n%예약 삭제 [번호] - 번호는 목록에서 참조",inline=True)
     await ctx.send(embed=embed)
 
 @bot.command(aliases=['reservation','res'])
@@ -74,6 +74,8 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
     if "추가" in types:
         print("추가")
         time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M').date()
+        print(datetime)
+        print(time)
         if time != None:
             msg = await ctx.send(f"{time} {time.hour}: {time.minute}")
             if msg != None:

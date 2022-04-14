@@ -87,7 +87,7 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
         await ctx.send(msg)
     elif "제거" in types:
         if datetime is not None and datetime > 0 and datetime < len(timers):
-            timers.remove(datetime)
+            del timers[datetime]
     else:
         ctx.send("%도움말")
 

@@ -30,6 +30,8 @@ class info:
         return self.__repeat
     def gettext(self):
         return self.__text
+    def add(self,timedelta):
+        self.__datetime += timedelta
     
 @bot.event
 async def on_ready():
@@ -89,7 +91,9 @@ async def task_loop():
                     mention += ""
             await msg.channel.send(mention+"\n레이드 10분 전! 늦으면 머머리\n"+timer.gettext())
         elif dif < timedelta(seconds=1):
-            if not timer.isrepeat():
+            if timer.isrepeat():
+                timer.add(timedelta(days=7))
+            else:
                 dellist.append(timer)
             mention = ""
             msg = timer.getmsg()
@@ -121,7 +125,7 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
         time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M')
         if time is not None:
             embed = discord.Embed(title="레이드 예약",color=0xFFD700)
-            embed.add_field(name=f"{ctx.channel.mention}",value=f"{time}시간에 레이드가 예약되었습니다. {ctx.channel.mention}\n{text}\n매주 반복 : {repeat}",inline=True)
+            embed.add_field(name=ctx.channel.mention,value=f"{time}시간에 레이드가 예약되었습니다. {ctx.channel.mention}\n{text}\n매주 반복 : {repeat}",inline=True)
             msg = await ctx.send(embed=embed)
             if msg is not None:
                 timers.append(info(time,msg,text,repeat))

@@ -67,6 +67,7 @@ async def task_loop():
                 dellist.appen(timer)
     for dell in dellist:
         timers.remove(dell)
+        print(f"{dell} is removed ")
 
 @bot.command(aliases=['helps'])
 async def 도움말(ctx):

@@ -71,16 +71,13 @@ async def task_loop():
             for cached in bot.cached_messages:
                 if cached.id == msg.id:
                     msg = cached
-            print(msg.reactions)
             for reaction in msg.reactions:
-                print("rec")
-                print(reaction.me)
-                if reaction.me:
-                    print("user..?")
-                    for user in reaction.uesrs():
-                        print("zero..?")
+                print(reaction.users())
+                for user in reaction.uesrs():
+                    if not user.bot:
                         mention += user.mention
-            await msg.channel.send(mention+" "+timer.gettext())
+                    mention += ""
+            await msg.channel.send(mention+timer.gettext())
     for dell in dellist:
         msg = dell.getmsg()
         if msg is not None:

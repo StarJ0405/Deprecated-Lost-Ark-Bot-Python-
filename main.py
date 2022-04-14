@@ -61,9 +61,10 @@ async def task_loop():
     for timer in timers:
         now = date.datetime.now() + timedelta(hours=9)
         res = timer.getdatetime() 
+        dif = res - now
         if res < now:
             dellist.append(timer)
-        elif res - now < timedelta(seconds=1):
+        elif dif < timedelta(days=1) and dif > timedelta(hours=23,minutes=59,seconds=59):
             if not timer.isrepeat():
                 dellist.append(timer)
             mention = ""
@@ -72,12 +73,39 @@ async def task_loop():
                 if cached.id == msg.id:
                     msg = cached
             for reaction in msg.reactions:
-                print(reaction.users())
                 async for user in reaction.users():
                     if not user.bot:
                         mention += user.mention
                     mention += ""
-            await msg.channel.send(mention+timer.gettext())
+            await msg.channel.send(mention+timer.gettext() +"오늘 레이드가 있는 날이에요! 안까먹었죠?")
+        elif dif < timedelta(minutes=10) and dif > timedelta(minutes=9,seconds=59):
+            if not timer.isrepeat():
+                dellist.append(timer)
+            mention = ""
+            msg = timer.getmsg()
+            for cached in bot.cached_messages:
+                if cached.id == msg.id:
+                    msg = cached
+            for reaction in msg.reactions:
+                async for user in reaction.users():
+                    if not user.bot:
+                        mention += user.mention
+                    mention += ""
+            await msg.channel.send(mention+timer.gettext() +"레이드 10분 전! 늦으면 머머리")
+        elif dif < timedelta(seconds=1):
+            if not timer.isrepeat():
+                dellist.append(timer)
+            mention = ""
+            msg = timer.getmsg()
+            for cached in bot.cached_messages:
+                if cached.id == msg.id:
+                    msg = cached
+            for reaction in msg.reactions:
+                async for user in reaction.users():
+                    if not user.bot:
+                        mention += user.mention
+                    mention += ""
+            await msg.channel.send(mention+timer.gettext() +"레이드 시간입니다. 모두 모여주세요!")
     for dell in dellist:
         msg = dell.getmsg()
         if msg is not None:

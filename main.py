@@ -98,7 +98,7 @@ async def 예약(ctx,types=None, datetime=None, repeat=False, *, text="빈 텍�
                 num+=1
             await ctx.send(msg)
         else:
-            ctx.send("예약된 알람이 없습니다.")
+            await ctx.send("예약된 알람이 없습니다.")
     elif "제거" in types:
         if datetime is not None and datetime >= 0 and datetime < len(timers):
             msg = timers[datetime].getmsg()

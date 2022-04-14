@@ -50,7 +50,7 @@ async def 도움말(ctx):
 
 @bot.command(aliases=['reservation','res'])
 async def 예약(ctx, datetime, *, text=None):
-    key = "%y년%m월%d일"
+    key = "%Y년%m월%d일"
     time = date.datetime.strptime(datetime,key).date()
     await ctx.send(time)
 

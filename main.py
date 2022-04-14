@@ -75,13 +75,13 @@ async def 예약(ctx,types, datetime, repeat, *, text="빈 텍스트"):
         print("추가")
         time = date.datetime.strptime(datetime,'%Y-%m-%d-%H-%M').date()
         if time != None:
-            msg = await ctx.send(time)
+            msg = await ctx.send(f"{time} {time.hour}: {time.minute}")
             if msg != None:
                 tasks.append(info(time,msg,repeat))
-                print(tasks)
+                print(timers)
     elif "목록" in types:
         print("목록")
-        print(tasks)
+        print(timers)
     elif "제거" in types:
         print("제거")
 

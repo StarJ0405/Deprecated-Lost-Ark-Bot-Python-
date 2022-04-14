@@ -62,6 +62,7 @@ async def 말하기(ctx,*,text=None):
         await ctx.send(text)
         await ctx.message.delete()
     else:
+        await ctx.send("어허. 밑장빼기 금지 손모가지 날라간다!")
         return None
 
 @bot.command(aliases=['server'])

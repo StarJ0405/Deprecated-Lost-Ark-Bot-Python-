@@ -59,8 +59,8 @@ async def on_member_join(member):
 async def task_loop():
     dellist = []
     for timer in timers:
-        now = date.datetime.now()
-        res = timer.getdatetime() + timedelta(hours=9)
+        now = date.datetime.now() + timedelta(hours=9)
+        res = timer.getdatetime() 
         if res < now:
             dellist.append(timer)
         elif res == now:

@@ -63,7 +63,7 @@ async def task_loop():
         res = timer.getdatetime() 
         if res < now:
             dellist.append(timer)
-        elif res - now < timedelta(seconds=1)):
+        elif res - now < timedelta(seconds=1):
             if not timer.isrepeat():
                 dellist.appen(timer)
             print("와 시간이에요!")

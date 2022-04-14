@@ -63,7 +63,7 @@ async def task_loop():
         if res < now:
             dellist.append(timer)
         elif res == now:
-            if !timer.isrepeat():
+            if not timer.isrepeat():
                 dellist.appen(timer)
     for dell in dellist:
         timers.remove(dell)

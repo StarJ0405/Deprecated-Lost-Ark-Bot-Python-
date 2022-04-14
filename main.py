@@ -58,7 +58,7 @@ async def on_member_join(member):
 async def task_loop():
     for timer in timers:
         print("yes act!")
-        print(timer.getdatetime())
+        print(timer)
         '''
         print(timer.getdatetime() - date.datetime.now())
         print(timer.isrepeat())

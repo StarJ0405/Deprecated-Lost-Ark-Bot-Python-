@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands, tasks
 import datetime as date
+from datetime import timedelta
 #from key import Token
 import random
 import os
@@ -59,7 +60,7 @@ async def task_loop():
     dellist = []
     for timer in timers:
         now = date.datetime.now()
-        res = timer.getdatetime()
+        res = timer.getdatetime() + timedelta(hours=9)
         if res < now:
             dellist.append(timer)
         elif res == now:

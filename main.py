@@ -50,12 +50,17 @@ async def on_command_error(ctx,error):
 async def on_member_join(member):
     guild = member.guild
     channel = None
+    channel2 = None
     for tc in guild.text_channels:
         if tc.id == 932908858354044928:
             channel = tc
+        elif tc.id= 959063025111937065:
+            channel2 = tc
     if channel == None:
         return None
-    await channel.send(f"{member.mention}서버에 입장하신것을 환영합니다. {channel.mention} 부탁드립니다.")
+    if channel2 == None:
+        return None
+    await channel.send(f"{member.mention}서버에 입장하신것을 환영합니다. {channel2.mention} 부탁드립니다.")
 
 @tasks.loop(seconds=1)
 async def task_loop():

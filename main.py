@@ -207,6 +207,8 @@ async def 파티(ctx,text=None):
         await msg.add_reaction("5️⃣")
         await msg.add_reaction("6️⃣")
         await msg.add_reaction("7️⃣")
+        await msg.add_reaction("8️⃣")
+        await msg.add_reaction("9️⃣")
     else:
         return None
 

@@ -198,7 +198,7 @@ async def 서버(ctx,text=None):
 async def 파티(ctx,text=None):
     if ctx.author.id == 262582555813871618:
         embed = discord.Embed(title="파티",color=0xFFD700)
-        embed.add_field(name="파티",value=f":one: ①쿠크세이튼\n\n:two: ②쿠크세이튼\n\n:three: ③쿠크세이튼\n\n:four: ④쿠크세이튼\n\n:five: ①아브렐슈드12\n\n:six: ①아브렐슈드34\n\n:seven: ①아브렐슈드56",inline=True)
+        embed.add_field(name="파티",value=f":one: ①쿠크세이튼\n\n:two: ②쿠크세이튼\n\n:three: ③쿠크세이튼\n\n:four: ④쿠크세이튼\n\n:five: ⑤쿠크세이튼\n\n:six: ⑥쿠크세이튼\n\n:seven: ①아브렐슈드12\n\n:eight: ①아브렐슈드34\n\n:nine: ①아브렐슈드56",inline=True)
         msg = await ctx.send(embed=embed)
         await msg.add_reaction("1️⃣")
         await msg.add_reaction("2️⃣")

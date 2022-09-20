@@ -476,7 +476,7 @@ async def on_raw_reaction_add(reaction):
             elif field.name == "감소 능력":
                 thr_i = ind
             elif field.name == "성공 확률":
-                chance = int(field.value.sub("%"))
+                chance = int(re.sub("%","",field.value))
         print(f"{one_i} {two_i} {thr_i} {chance}")
         if str(reaction.emoji.name) == "1️⃣" and one[9] == 0:
             field = fields[one_i]

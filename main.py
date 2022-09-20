@@ -530,7 +530,7 @@ async def on_raw_reaction_add(reaction):
                         v=1
                     else:
                         v=-1
-                 if v == 0:
+                if v == 0:
                     value += '□'
                 elif v == -1:
                     value += '▩'

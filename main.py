@@ -594,7 +594,7 @@ async def on_raw_reaction_add(reaction):
                     embed.set_field_at(index=i,name=field.name,value="□□□□□□□□□□",inline=field.inline)
             await msg.edit(embed=embed)
         elif str(reaction.emoji.name) == "❌":
-            msg.delete()
+            await msg.delete()
 
             
 @bot.event

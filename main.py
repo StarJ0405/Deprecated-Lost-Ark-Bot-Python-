@@ -464,6 +464,9 @@ async def on_raw_reaction_add(reaction):
                         await user.add_roles(ro)
     elif "돌 깍기" in title:
         await msg.remove_reaction(reaction.emoji,user)
+        if user.name != embed.author.name:
+            print(f"{user.name}님이 {embed.author.name}님의 돌을 계속 시도합니다.")
+            return
         fields = embed.fields
         one, two, thr = [0]*10,[0]*10,[0]*10
         chance,chance_i,one_i,two_i,thr_i =0,0,0,0,0
@@ -506,7 +509,7 @@ async def on_raw_reaction_add(reaction):
                 chance = int(re.sub("%","",field.value))
                 chance_i = ind
         now  = random.randrange(0,1000) / 10.0
-        print(f"{msg.author.name} {now} / {chance}")
+        print(f"{user.name} {now} / {chance}")
         if str(reaction.emoji.name) == "1️⃣" and one[9] == 0:
             field = fields[one_i]
             value = ""

@@ -551,7 +551,7 @@ async def on_message(msg):
                 numbers = int(re.sub('958224347116494918','',re.sub(r'[^0-9]','',msg.content)))
                 return await msg.channel.send(f"4인 기준 : {int(numbers*0.66)}원\n8인 기준 : {int(numbers*0.77)}원")
             elif "마법의 별" in msg.content or "마법의별" in msg.content :
-                answers = ["언젠가는 하겠죠.","가만있어요.","다 안 돼요.","그것도 안 돼요.","좋아요.","다시 한 번 물어봐요.","괜찮아요","안 돼요.","돼요"]
+                answers = ["언젠가는","가만있어요.","다 안 돼요.","그것도 안 돼요.","좋아요.","다시 한 번 물어봐요.","괜찮아요","안 돼요.","돼요"]
                 c = random.randrange(0,len(answers))
                 return await msg.channel.send(answers[c])
             elif "먕누나" in msg.content or "먕난나" in msg.content:
@@ -561,10 +561,10 @@ async def on_message(msg):
                 return await msg.channel.send(f"{a}")
             elif "돌 깍기" in msg.content or "돌깍기" in msg.content :
                 embed = discord.Embed(title="돌 깍기 시뮬레이터",color=0xFF0000)
+                embed.add_field(name="세공자",value=f"{msg.author.name}",inline=False)
                 embed.add_field(name="증가 능력1",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
                 embed.add_field(name="증가 능력2",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
                 embed.add_field(name="감소 능력",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
-                embed.add_field(name="자",value=f"{msg.author.name}",inline=False)
                 msg = await msg.channel.send(embed=embed)
                 await msg.add_reaction("1️⃣")
                 await msg.add_reaction("2️⃣")

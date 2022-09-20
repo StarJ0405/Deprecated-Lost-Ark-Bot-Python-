@@ -465,14 +465,14 @@ async def on_raw_reaction_add(reaction):
     elif "돌 깍기" in title:
         await msg.remove_reaction(reaction.emoji,user)
         fields = embed.fields
-        print(fields)
+        #chance = fields
         one, two, thr = [0]*10,[0]*10,[0]*10
         if str(reaction.emoji.name) == "1️⃣":
             if one[9] == 0:
                 for field in fields:
-                    #if field['name'] == "증가 능력1":
-                    print(field)
-                    #    print("must be changed")
+                    if field[0] == "증가 능력1":
+                        field[1] = ""
+                        print("must be changed1")
         elif str(reaction.emoji.name) == "2️⃣":
             print("yes 2")
         elif str(reaction.emoji.name) == "3️⃣":

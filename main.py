@@ -484,7 +484,7 @@ async def on_raw_reaction_add(reaction):
             act = False
             for slot in range(len(one)):
                 v = one[slot]
-                if !act and v == 0:
+                if not act and v == 0:
                     act = True
                     if now < chance:
                         v=1
@@ -504,7 +504,7 @@ async def on_raw_reaction_add(reaction):
             act = False
             for slot in range(len(two)):
                 v = two[slot]
-                if !act and v == 0:
+                if not act and v == 0:
                     act = True
                     if now < chance:
                         v=1
@@ -524,7 +524,7 @@ async def on_raw_reaction_add(reaction):
             act = False
             for slot in range(len(thr)):
                 v = thr[slot]
-                if !act and v == 0:
+                if not act and v == 0:
                     act = True
                     if now < chance:
                         v=1

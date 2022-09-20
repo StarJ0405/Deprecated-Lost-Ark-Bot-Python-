@@ -470,8 +470,8 @@ async def on_raw_reaction_add(reaction):
         if str(reaction.emoji.name) == "1️⃣":
             if one[9] == 0:
                 for field in fields:
-                    if field[0] == "증가 능력1":
-                        field[1] = ""
+                    if field.name == "증가 능력1":
+                        field.value= ""
                         print("must be changed1")
         elif str(reaction.emoji.name) == "2️⃣":
             print("yes 2")

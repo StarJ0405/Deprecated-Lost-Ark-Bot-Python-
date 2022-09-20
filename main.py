@@ -465,21 +465,31 @@ async def on_raw_reaction_add(reaction):
     elif "돌 깍기" in title:
         await msg.remove_reaction(reaction.emoji,user)
         fields = embed.fields
-        #chance = fields
         one, two, thr = [0]*10,[0]*10,[0]*10
-        if str(reaction.emoji.name) == "1️⃣":
-            if one[9] == 0:
-                c = 0;
-                for field in fields:
-                    if field.name == "증가 능력1":
-                        embed.set_field_at(index=c,name=field.name,value="필..수?",inline=field.inline)
-                        await msg.edit(embed=embed)
-                        break
-                    c+=1
-        elif str(reaction.emoji.name) == "2️⃣":
-            print("yes 2")
-        elif str(reaction.emoji.name) == "3️⃣":
-            print("yes 3")
+        chance,one_i,two_i,thr_i =0,0,0,0
+        for ind in range(len(fields)):
+            field = fields[ind]
+            if field.name == "증가 능력1":
+                one_i = ind
+            elif field.name == "증가 능력2":
+                two_i = ind
+            elif field.name == "감소 능력":
+                thr_i = ind
+            elif field.name == "성공 확률":
+                chance = int(field.value.sub("%"))
+        print(f"{one_i} {two_i} {thr_i} {chance}")
+        if str(reaction.emoji.name) == "1️⃣" and one[9] == 0:
+            field = fields[one_i]
+            embed.set_field_at(index=one_i,name=field.name,value="필..수?",inline=field.inline)
+            await msg.edit(embed=embed)
+        elif str(reaction.emoji.name) == "2️⃣" and two[9] == 0:
+            field = fields[two_i]
+            embed.set_field_at(index=two_i,name=field.name,value="필..수?",inline=field.inline)
+            await msg.edit(embed=embed)
+        elif str(reaction.emoji.name) == "3️⃣" and thr[9] == 0:
+            field = fields[thr_i]
+            embed.set_field_at(index=thr_i,name=field.name,value="필..수?",inline=field.inline)
+            await msg.edit(embed=embed)
 
             
 @bot.event

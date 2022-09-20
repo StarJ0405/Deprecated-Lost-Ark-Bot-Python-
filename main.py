@@ -471,6 +471,8 @@ async def on_raw_reaction_add(reaction):
                 for field in fields:
                     if field['name'] == "증가 능력1":
                         field['value'] = ""
+                        print(field)
+                        print("must be changed")
         elif str(reaction.emoji.name) == "2️⃣":
             print("yes 2")
         elif str(reaction.emoji.name) == "3️⃣":
@@ -566,10 +568,11 @@ async def on_message(msg):
                 return await msg.channel.send(f"{a}")
             elif "돌 깍기" in msg.content or "돌깍기" in msg.content :
                 embed = discord.Embed(title="돌 깍기 시뮬레이터",color=0xFF0000)
-                embed.add_field(name=f"{msg.author.name}",value="75%",inline=False)
+                embed.add_field(name=f"성공 확률",value="75%",inline=False)
                 embed.add_field(name="증가 능력1",value=f"□□□□□□□□□□",inline=False)
                 embed.add_field(name="증가 능력2",value=f"□□□□□□□□□□",inline=False)
                 embed.add_field(name="감소 능력",value=f"□□□□□□□□□□",inline=False)
+                embed.set_author(msg.author)
                 msg = await msg.channel.send(embed=embed)
                 await msg.add_reaction("1️⃣")
                 await msg.add_reaction("2️⃣")

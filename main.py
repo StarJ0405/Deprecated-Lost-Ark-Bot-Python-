@@ -466,7 +466,7 @@ async def on_raw_reaction_add(reaction):
         await msg.remove_reaction(reaction.emoji,user)
         fields = embed.fields
         one, two, thr = [0]*10,[0]*10,[0]*10
-        chance,one_i,two_i,thr_i =0,0,0,0
+        chance,chance_i,one_i,two_i,thr_i =0,0,0,0,0
         for ind in range(len(fields)):
             field = fields[ind]
             if field.name == "증가 능력1":
@@ -504,6 +504,7 @@ async def on_raw_reaction_add(reaction):
                         thr[i] = 1
             elif field.name == "성공 확률":
                 chance = int(re.sub("%","",field.value))
+                chance_i = ind
         now  = random.randrange(0,100)
         if str(reaction.emoji.name) == "1️⃣" and one[9] == 0:
             field = fields[one_i]
@@ -515,8 +516,12 @@ async def on_raw_reaction_add(reaction):
                     act = True
                     if now < chance:
                         v=1
+                        if chance < 75:
+                            chance += 10
                     else:
                         v=-1
+                        if chance > 5:
+                            chance -= 10
                 if v == 0:
                     value += '□'
                 elif v == -1:
@@ -524,6 +529,8 @@ async def on_raw_reaction_add(reaction):
                 elif v == 1:
                     value += '■'
             embed.set_field_at(index=one_i,name=field.name,value=value,inline=field.inline)
+            chance_field = fields[chance_i)
+            embed.set_field_at(index=chance_i,name=chance_field.name,value=f"{chance}%",inline=chance_field.inline)
             await msg.edit(embed=embed)
         elif str(reaction.emoji.name) == "2️⃣" and two[9] == 0:
             field = fields[two_i]
@@ -535,8 +542,12 @@ async def on_raw_reaction_add(reaction):
                     act = True
                     if now < chance:
                         v=1
+                        if chance < 75:
+                            chance += 10
                     else:
                         v=-1
+                        if chance > 5:
+                            chance -= 10
                 if v == 0:
                     value += '□'
                 elif v == -1:
@@ -544,6 +555,8 @@ async def on_raw_reaction_add(reaction):
                 elif v == 1:
                     value += '■'
             embed.set_field_at(index=two_i,name=field.name,value=value,inline=field.inline)
+            chance_field = fields[chance_i)
+            embed.set_field_at(index=chance_i,name=chance_field.name,value=f"{chance}%",inline=chance_field.inline)
             await msg.edit(embed=embed)
         elif str(reaction.emoji.name) == "3️⃣" and thr[9] == 0:
             field = fields[thr_i]
@@ -555,8 +568,12 @@ async def on_raw_reaction_add(reaction):
                     act = True
                     if now < chance:
                         v=1
+                        if chance < 75:
+                            chance += 10
                     else:
                         v=-1
+                        if chance > 5:
+                            chance -= 10
                 if v == 0:
                     value += '□'
                 elif v == -1:
@@ -564,6 +581,8 @@ async def on_raw_reaction_add(reaction):
                 elif v == 1:
                     value += '■'
             embed.set_field_at(index=thr_i,name=field.name,value=value,inline=field.inline)
+            chance_field = fields[chance_i)
+            embed.set_field_at(index=chance_i,name=chance_field.name,value=f"{chance}%",inline=chance_field.inline)
             await msg.edit(embed=embed)
         elif str(reaction.emoji.name) == "🔁":
             for i in range(len(fields)):

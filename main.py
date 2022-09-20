@@ -473,7 +473,8 @@ async def on_raw_reaction_add(reaction):
                 for field in fields:
                     if field.name == "증가 능력1":
                         print("must be changed2")
-                        embed.set_field_at(c,field.name,"",field.inline)
+                        field.value=""
+                        embed.set_field_at(c,field)
                         await msg.edit(embed=embed)
                     c+=1
         elif str(reaction.emoji.name) == "2️⃣":

@@ -465,7 +465,7 @@ async def on_raw_reaction_add(reaction):
     elif "돌 깍기" in title:
         await msg.remove_reaction(reaction.emoji,user)
         fields = embed.to_dict()['fields']
-        one, two, thr = [0]*10
+        one, two, thr = [0]*10,[0]*10,[0]*10
         if str(reaction.emoji.name) == "1️⃣":
             if one[9] != 0:
                 for field in fields:

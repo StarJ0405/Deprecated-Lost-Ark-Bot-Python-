@@ -471,6 +471,15 @@ async def on_raw_reaction_add(reaction):
             field = fields[ind]
             if field.name == "증가 능력1":
                 one_i = ind
+                f_value = field.value
+                for i in range(len(f_value)):
+                    c = f_value[i]
+                    if c == '□':
+                        one[c] = 0
+                    elif v == '▩':
+                        one[c] = -1
+                    elif v == '■':
+                        one[c] = 1
             elif field.name == "증가 능력2":
                 two_i = ind
             elif field.name == "감소 능력":

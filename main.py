@@ -465,23 +465,12 @@ async def on_raw_reaction_add(reaction):
     elif "돌 깍기" in title:
         await msg.remove_reaction(reaction.emoji,user)
         fields = embed.to_dict()['fields']
-        one_up, one_down, two_up, two_down, thr_up, thr_down = 0, 0, 0, 0, 0, 0
-        for field in fields:
-            if field['name'] == "증가 능력1":
-                one_up = field['value'].count('■')
-                one_down = field['value'].count('▩')
-            elif field['name'] == "증가 능력2":
-                two_up = field['value'].count('■')
-                two_down = field['value'].count('▩')
-            elif field['name'] == "감소 능력":
-                thr_up = field['value'].count('■')
-                thr_down = field['value'].count('▩')
-        print(f"stone : {one_up} {one_down} / {two_up} {two_down} / {thr_up} {thr_down}")
+        one, two, thr = [0]*10
         if str(reaction.emoji.name) == "1️⃣":
-            if one_up + one_down < 10:
+            if one[9] != 0:
                 for field in fields:
                     if field['name'] == "증가 능력1":
-                        print(field)
+                        field['value'] = ""
         elif str(reaction.emoji.name) == "2️⃣":
             print("yes 2")
         elif str(reaction.emoji.name) == "3️⃣":

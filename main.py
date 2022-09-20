@@ -460,6 +460,8 @@ async def on_raw_reaction_add(reaction):
                 for ro in roles:
                     if ro.id == parties2[party]:
                         await user.add_roles(ro)
+    elif "돌 깍기" in title:
+        reaction.remove
 
 @bot.event
 async def on_raw_reaction_remove(reaction):

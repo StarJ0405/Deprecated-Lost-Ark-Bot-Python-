@@ -461,7 +461,7 @@ async def on_raw_reaction_add(reaction):
                     if ro.id == parties2[party]:
                         await user.add_roles(ro)
     elif "돌 깍기" in title:
-        msg.clear_reaction(reaction)
+        await msg.clear_reaction(reaction)
 
 @bot.event
 async def on_raw_reaction_remove(reaction):
@@ -542,7 +542,7 @@ async def on_message(msg):
             elif "뭐해" in msg.content:
                 return await msg.channel.send("알아서 뭐하게")
             elif "할줄" in msg.content:
-                return await msg.channel.send(f"얼마 [가격], [가디언이름]")
+                return await msg.channel.send(f"얼마 [가격], [가디언이름], \'마법의 별\' ㅇㅇㅇ?, 돌 깍기")
             elif "얼마" in msg.content:
                 numbers = int(re.sub('958224347116494918','',re.sub(r'[^0-9]','',msg.content)))
                 return await msg.channel.send(f"4인 기준 : {int(numbers*0.66)}원\n8인 기준 : {int(numbers*0.77)}원")

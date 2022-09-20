@@ -381,7 +381,7 @@ async def 캐릭터(ctx,text=None):
     else:
         return None
 
-@bot.command(aliases=['fighting'])
+@bot.command(aliases=['fighting','먕차먕차'])
 async def 영차영차(ctx,text=None):
     if ctx.author.id == 262582555813871618:
         await ctx.message.delete()

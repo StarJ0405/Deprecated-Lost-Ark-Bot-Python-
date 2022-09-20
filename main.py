@@ -462,7 +462,7 @@ async def on_raw_reaction_add(reaction):
                 for ro in roles:
                     if ro.id == parties2[party]:
                         await user.add_roles(ro)
-    elif "돌 기" in title:
+    elif "돌 깎기" in title:
         await msg.remove_reaction(reaction.emoji,user)
         if user.name != embed.author.name:
             print(f"{user.name}님이 {embed.author.name}님의 돌을 계속 시도합니다.")

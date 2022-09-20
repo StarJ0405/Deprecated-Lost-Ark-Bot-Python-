@@ -416,7 +416,9 @@ async def on_raw_reaction_add(reaction):
         return None
     msg = await channel.fetch_message(reaction.message_id)
     title = None
+    embed = None
     for em in msg.embeds:
+        embed = em
         title = em.title
     if title == None:
         return None
@@ -462,8 +464,13 @@ async def on_raw_reaction_add(reaction):
                         await user.add_roles(ro)
     elif "돌 깍기" in title:
         await msg.remove_reaction(reaction.emoji,user)
-        dic = msg.embeds[0].to_dict()
-        print(dic)
+        fields = embed.to_dict()[fields]
+        one_up, one_down, two_up, two_down, thr_up, thr_down = 0, 0, 0, 0, 0, 0
+        for field in fields:
+            if field['name'] == "증가 능력1":
+                one_up = field['value'].count('■')
+                one_down = field['value'].count('▩')
+        print(f"stone : {one} {two} {three}")
         if str(reaction.emoji.name) == "1️⃣":
             print("yes 1")
         elif str(reaction.emoji.name) == "2️⃣":
@@ -562,7 +569,7 @@ async def on_message(msg):
             elif "돌 깍기" in msg.content or "돌깍기" in msg.content :
                 embed = discord.Embed(title="돌 깍기 시뮬레이터",color=0xFF0000)
                 embed.add_field(name="세공자",value=f"{msg.author.name}",inline=False)
-                embed.add_field(name="증가 능력1",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
+                embed.add_field(name="증가 능력1",value=f"□□□□□□□□□□",inline=False)
                 embed.add_field(name="증가 능력2",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
                 embed.add_field(name="감소 능력",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
                 msg = await msg.channel.send(embed=embed)

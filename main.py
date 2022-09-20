@@ -505,7 +505,8 @@ async def on_raw_reaction_add(reaction):
             elif field.name == "성공 확률":
                 chance = int(re.sub("%","",field.value))
                 chance_i = ind
-        now  = random.randrange(0,1000)
+        now  = random.randrange(0,1000) / 10.0
+        print(f"f{author.name} {now} / {chance}")
         if str(reaction.emoji.name) == "1️⃣" and one[9] == 0:
             field = fields[one_i]
             value = ""
@@ -514,7 +515,7 @@ async def on_raw_reaction_add(reaction):
                 v = one[slot]
                 if not act and v == 0:
                     act = True
-                    if now/10.0 < chance:
+                    if now < chance:
                         v=1
                         if chance > 5:
                             chance -= 10
@@ -540,7 +541,7 @@ async def on_raw_reaction_add(reaction):
                 v = two[slot]
                 if not act and v == 0:
                     act = True
-                    if now/10.0 < chance:
+                    if now < chance:
                         v=1
                         if chance > 5:
                             chance -= 10
@@ -566,7 +567,7 @@ async def on_raw_reaction_add(reaction):
                 v = thr[slot]
                 if not act and v == 0:
                     act = True
-                    if now/10.0 < chance:
+                    if now < chance:
                         v=1
                         if chance > 5:
                             chance -= 10
@@ -592,6 +593,8 @@ async def on_raw_reaction_add(reaction):
                 else:
                     embed.set_field_at(index=i,name=field.name,value="□□□□□□□□□□",inline=field.inline)
             await msg.edit(embed=embed)
+        elif str(reaction.emoji.name) == "❌":
+            msg.delete()
 
             
 @bot.event
@@ -665,17 +668,17 @@ async def on_message(msg):
         await bot.process_commands(msg)
     elif msg.author.id != 958224347116494918:
         if bot.user in msg.mentions:
-            if "뭐해" in msg.content:
+            if "마법의 별" in msg.content or "마법의별" in msg.content :
+                answers = ["언젠가는","가만있어요.","다 안 돼요.","그것도 안 돼요.","좋아요.","다시 한 번 물어봐요.","괜찮아요","안 돼요.","돼요"]
+                c = random.randrange(0,len(answers))
+                return await msg.channel.send(answers[c])
+            elif "뭐해" in msg.content:
                 return await msg.channel.send("알아서 뭐하게")
             elif "할줄" in msg.content:
                 return await msg.channel.send(f"얼마 [가격], [가디언이름], \'마법의 별\' ㅇㅇㅇ?, 돌 깍기")
             elif "얼마" in msg.content:
                 numbers = int(re.sub('958224347116494918','',re.sub(r'[^0-9]','',msg.content)))
                 return await msg.channel.send(f"4인 기준 : {int(numbers*0.66)}원\n8인 기준 : {int(numbers*0.77)}원")
-            elif "마법의 별" in msg.content or "마법의별" in msg.content :
-                answers = ["언젠가는","가만있어요.","다 안 돼요.","그것도 안 돼요.","좋아요.","다시 한 번 물어봐요.","괜찮아요","안 돼요.","돼요"]
-                c = random.randrange(0,len(answers))
-                return await msg.channel.send(answers[c])
             elif "먕누나" in msg.content or "먕난나" in msg.content:
                 for em in msg.guild.emojis:
                     if em.name == "mo_noona":
@@ -688,11 +691,13 @@ async def on_message(msg):
                 embed.add_field(name="증가 능력2",value=f"□□□□□□□□□□",inline=False)
                 embed.add_field(name="감소 능력",value=f"□□□□□□□□□□",inline=False)
                 embed.set_author(name=msg.author.name)
+                await msg.delete()
                 msg = await msg.channel.send(embed=embed)
                 await msg.add_reaction("1️⃣")
                 await msg.add_reaction("2️⃣")
                 await msg.add_reaction("3️⃣")
-                return await msg.add_reaction("🔁")
+                await msg.add_reaction("🔁")
+                return await msg.add_reaction("❌")
 
             elif "우르닐" in msg.content:
                 embed = discord.Embed(title="우르닐",color=0xFFD700)

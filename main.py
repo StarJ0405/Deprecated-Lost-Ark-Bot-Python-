@@ -506,7 +506,7 @@ async def on_raw_reaction_add(reaction):
                 chance = int(re.sub("%","",field.value))
                 chance_i = ind
         now  = random.randrange(0,1000) / 10.0
-        print(f"f{author.name} {now} / {chance}")
+        print(f"f{msg.author.name} {now} / {chance}")
         if str(reaction.emoji.name) == "1️⃣" and one[9] == 0:
             field = fields[one_i]
             value = ""

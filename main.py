@@ -482,8 +482,26 @@ async def on_raw_reaction_add(reaction):
                         one[i] = 1
             elif field.name == "증가 능력2":
                 two_i = ind
+                f_value = field.value
+                for i in range(len(f_value)):
+                    c = f_value[i]
+                    if c == '□':
+                        two[i] = 0
+                    elif c == '▩':
+                        two[i] = -1
+                    elif c == '■':
+                        two[i] = 1
             elif field.name == "감소 능력":
                 thr_i = ind
+                f_value = field.value
+                for i in range(len(f_value)):
+                    c = f_value[i]
+                    if c == '□':
+                        thr[i] = 0
+                    elif c == '▩':
+                        thr[i] = -1
+                    elif c == '■':
+                        thr[i] = 1
             elif field.name == "성공 확률":
                 chance = int(re.sub("%","",field.value))
         now  = random.randrange(0,100)
@@ -546,6 +564,14 @@ async def on_raw_reaction_add(reaction):
                 elif v == 1:
                     value += '■'
             embed.set_field_at(index=thr_i,name=field.name,value=value,inline=field.inline)
+            await msg.edit(embed=embed)
+        elif str(reaction.emoji.name) == "🔁":
+            for i in range(len(fields)):
+                field = fields[i]
+                if field.name == "성공 확률":
+                    embed.set_field_at(index=i,name=field.name,value="75%",inline=field.inline)
+                else:
+                    embed.set_field_at(index=i,name=field.name,value="□□□□□□□□□□",inline=field.inline)
             await msg.edit(embed=embed)
 
             
@@ -638,7 +664,7 @@ async def on_message(msg):
                 return await msg.channel.send(f"{a}")
             elif "돌 깍기" in msg.content or "돌깍기" in msg.content :
                 embed = discord.Embed(title="돌 깍기 시뮬레이터",color=0xFF0000)
-                embed.add_field(name=f"성공 확률",value="75%",inline=False)
+                embed.add_field(name="성공 확률",value="75%",inline=False)
                 embed.add_field(name="증가 능력1",value=f"□□□□□□□□□□",inline=False)
                 embed.add_field(name="증가 능력2",value=f"□□□□□□□□□□",inline=False)
                 embed.add_field(name="감소 능력",value=f"□□□□□□□□□□",inline=False)
@@ -646,7 +672,8 @@ async def on_message(msg):
                 msg = await msg.channel.send(embed=embed)
                 await msg.add_reaction("1️⃣")
                 await msg.add_reaction("2️⃣")
-                return await msg.add_reaction("3️⃣")
+                await msg.add_reaction("3️⃣")
+                return await msg.add_reaction("🔁")
 
             elif "우르닐" in msg.content:
                 embed = discord.Embed(title="우르닐",color=0xFFD700)

@@ -491,11 +491,11 @@ async def on_raw_reaction_add(reaction):
                     else:
                         v=-1
                 if v == 0:
-                    value += □
+                    value += '□'
                 elif v == -1:
-                    value += ▩
+                    value += '▩'
                 elif v == 1:
-                    value += ■
+                    value += '■'
             embed.set_field_at(index=one_i,name=field.name,value=value,inline=field.inline)
             await msg.edit(embed=embed)
         elif str(reaction.emoji.name) == "2️⃣" and two[9] == 0:
@@ -511,11 +511,11 @@ async def on_raw_reaction_add(reaction):
                     else:
                         v=-1
                 if v == 0:
-                    value += □
+                    value += '□'
                 elif v == -1:
-                    value += ▩
+                    value += '▩'
                 elif v == 1:
-                    value += ■
+                    value += '■'
             embed.set_field_at(index=two_i,name=field.name,value=value,inline=field.inline)
             await msg.edit(embed=embed)
         elif str(reaction.emoji.name) == "3️⃣" and thr[9] == 0:
@@ -530,12 +530,12 @@ async def on_raw_reaction_add(reaction):
                         v=1
                     else:
                         v=-1
-                if v == 0:
-                    value += □
+                 if v == 0:
+                    value += '□'
                 elif v == -1:
-                    value += ▩
+                    value += '▩'
                 elif v == 1:
-                    value += ■
+                    value += '■'
             embed.set_field_at(index=thr_i,name=field.name,value=value,inline=field.inline)
             await msg.edit(embed=embed)
 

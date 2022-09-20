@@ -505,7 +505,7 @@ async def on_raw_reaction_add(reaction):
             elif field.name == "성공 확률":
                 chance = int(re.sub("%","",field.value))
                 chance_i = ind
-        now  = random.randrange(0,100)
+        now  = random.randrange(0,1000)
         if str(reaction.emoji.name) == "1️⃣" and one[9] == 0:
             field = fields[one_i]
             value = ""
@@ -514,7 +514,7 @@ async def on_raw_reaction_add(reaction):
                 v = one[slot]
                 if not act and v == 0:
                     act = True
-                    if now < chance:
+                    if now/10.0 < chance:
                         v=1
                         if chance > 5:
                             chance -= 10
@@ -540,7 +540,7 @@ async def on_raw_reaction_add(reaction):
                 v = two[slot]
                 if not act and v == 0:
                     act = True
-                    if now < chance:
+                    if now/10.0 < chance:
                         v=1
                         if chance > 5:
                             chance -= 10
@@ -566,7 +566,7 @@ async def on_raw_reaction_add(reaction):
                 v = thr[slot]
                 if not act and v == 0:
                     act = True
-                    if now < chance:
+                    if now/10.0 < chance:
                         v=1
                         if chance > 5:
                             chance -= 10

@@ -472,7 +472,7 @@ async def on_raw_reaction_add(reaction):
                 c = 0;
                 for field in fields:
                     if field.name == "증가 능력1":
-                        embed.set_field_at(c,name=field.name,value=" ",inline=field.inline)
+                        embed.set_field_at(index=c,name=field.name,value="필..수?",inline=field.inline)
                         await msg.edit(embed=embed)
                         break
                     c+=1

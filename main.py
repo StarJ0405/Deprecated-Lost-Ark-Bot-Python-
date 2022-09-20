@@ -476,7 +476,7 @@ async def on_raw_reaction_add(reaction):
             elif field['name'] == "감소 능력":
                 thr_up = field['value'].count('■')
                 thr_down = field['value'].count('▩')
-        print(f"stone : {one_up} {one_down} / {two_up} {two_down} / {three_up} {three_down}")
+        print(f"stone : {one_up} {one_down} / {two_up} {two_down} / {thr_up} {thr_down}")
         if str(reaction.emoji.name) == "1️⃣":
             if one_up + one_down < 10:
                 for field in fields:

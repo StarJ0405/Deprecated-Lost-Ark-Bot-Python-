@@ -464,7 +464,7 @@ async def on_raw_reaction_add(reaction):
                         await user.add_roles(ro)
     elif "돌 깍기" in title:
         await msg.remove_reaction(reaction.emoji,user)
-        fields = embed.to_dict()[fields]
+        fields = embed.to_dict()['fields']
         one_up, one_down, two_up, two_down, thr_up, thr_down = 0, 0, 0, 0, 0, 0
         for field in fields:
             if field['name'] == "증가 능력1":

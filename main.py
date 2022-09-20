@@ -544,6 +544,10 @@ async def on_message(msg):
             elif "얼마" in msg.content:
                 numbers = int(re.sub('958224347116494918','',re.sub(r'[^0-9]','',msg.content)))
                 return await msg.channel.send(f"4인 기준 : {int(numbers*0.66)}원\n8인 기준 : {int(numbers*0.77)}원")
+            elif "마법의 별님" in msg.content or "마법의별님" in msg.content :
+                answers = ["언젠가는 하겠죠.","가만있어요.","다 안 돼요.","그것도 안 돼요.","좋아요.","다시 한 번 물어봐요.","안 돼요.","돼요"]
+                c = random.randrange(0,len(answers))
+                return await msg.channel.send(answers[c])
             elif msg.author.id== 487906112020938763:
                 replies = ["😍","😝","무슨일이야 누나","부르셨나요 공주님","먕난나!먕난나!","머야 누가 괴롭혀?","얘들아 누님이 부른다 연장 챙겨라"]
                 c = random.randrange(0,len(replies))

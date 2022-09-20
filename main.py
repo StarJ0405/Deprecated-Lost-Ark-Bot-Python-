@@ -386,7 +386,7 @@ async def 영차영차(ctx,text=None):
     if ctx.author.id == 262582555813871618:
         await ctx.message.delete()
         msg = f"헤처모여! 영차영차~!"
-        for a in range(20):
+        for a in range(25):
             msg += "\n영차"+str(a+1)
         msg += "\n영차영차s 집합 완료!"
         await ctx.send(msg)
@@ -545,9 +545,19 @@ async def on_message(msg):
                 numbers = int(re.sub('958224347116494918','',re.sub(r'[^0-9]','',msg.content)))
                 return await msg.channel.send(f"4인 기준 : {int(numbers*0.66)}원\n8인 기준 : {int(numbers*0.77)}원")
             elif "마법의 별" in msg.content or "마법의별" in msg.content :
-                answers = ["언젠가는 하겠죠.","가만있어요.","다 안 돼요.","그것도 안 돼요.","좋아요.","다시 한 번 물어봐요.","안 돼요.","돼요"]
+                answers = ["언젠가는 하겠죠.","가만있어요.","다 안 돼요.","그것도 안 돼요.","좋아요.","다시 한 번 물어봐요.","괜찮아요","안 돼요.","돼요"]
                 c = random.randrange(0,len(answers))
                 return await msg.channel.send(answers[c])
+            elif "돌 깍기" in msg.content or "돌깍기" in msg.content :
+                embed = discord.Embed(title="돌 깍기 시뮬레이터",color=0xFF0000)
+                embed.add_field(name="증가 능력1",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
+                embed.add_field(name="증가 능력2",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
+                embed.add_field(name="감소 능력",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
+                msg = await msg.channel.send(answers[c])
+                await msg.add_reaction("1️⃣")
+                await msg.add_reaction("2️⃣")
+                return await msg.add_reaction("3️⃣")
+
             elif "우르닐" in msg.content:
                 embed = discord.Embed(title="우르닐",color=0xFFD700)
                 embed.add_field(name="에버그레이스의 시험 1단계 첫번째 가디언",value=f"아이템 레벨 : 302\n레이드 지역 : 붉은 모래 사막\n단단한 갑옷을 두른 우르닐은, 분노에 찬 앞발로 눈앞의 적을 유린한다.",inline=False)

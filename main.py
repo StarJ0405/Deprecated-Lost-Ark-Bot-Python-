@@ -462,7 +462,14 @@ async def on_raw_reaction_add(reaction):
                         await user.add_roles(ro)
     elif "돌 깍기" in title:
         await msg.remove_reaction(reaction.emoji,user)
+        if str(reaction.emoji.name) == "one":
+            print("yes 1")
+        elif str(reaction.emoji.name) == "two":
+            print("yes 2")
+        elif str(reaction.emoji.name) == "three":
+            print("yes 3")
 
+            
 @bot.event
 async def on_raw_reaction_remove(reaction):
     for g in bot.guilds:

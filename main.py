@@ -462,6 +462,8 @@ async def on_raw_reaction_add(reaction):
                         await user.add_roles(ro)
     elif "돌 깍기" in title:
         await msg.remove_reaction(reaction.emoji,user)
+        dic = msg.embeds[0].tod_ict()
+        print(dic)
         if str(reaction.emoji.name) == "1️⃣":
             print("yes 1")
         elif str(reaction.emoji.name) == "2️⃣":
@@ -562,6 +564,7 @@ async def on_message(msg):
                 embed.add_field(name="증가 능력1",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
                 embed.add_field(name="증가 능력2",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
                 embed.add_field(name="감소 능력",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)
+                embed.add_field(name="자",value=f"{msg.author.name}",inline=False)
                 msg = await msg.channel.send(embed=embed)
                 await msg.add_reaction("1️⃣")
                 await msg.add_reaction("2️⃣")

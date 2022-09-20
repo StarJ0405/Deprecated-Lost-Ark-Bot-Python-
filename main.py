@@ -462,7 +462,7 @@ async def on_raw_reaction_add(reaction):
                         await user.add_roles(ro)
     elif "돌 깍기" in title:
         await msg.remove_reaction(reaction.emoji,user)
-        dic = msg.embeds[0].tod_ict()
+        dic = msg.embeds[0].to_dict()
         print(dic)
         if str(reaction.emoji.name) == "1️⃣":
             print("yes 1")

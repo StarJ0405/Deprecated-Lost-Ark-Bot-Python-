@@ -516,11 +516,11 @@ async def on_raw_reaction_add(reaction):
                     act = True
                     if now < chance:
                         v=1
-                        if chance < 75:
+                        if chance > 5:
                             chance -= 10
                     else:
                         v=-1
-                        if chance > 5:
+                        if chance < 75:
                             chance += 10
                 if v == 0:
                     value += '□'
@@ -542,11 +542,11 @@ async def on_raw_reaction_add(reaction):
                     act = True
                     if now < chance:
                         v=1
-                        if chance < 75:
+                        if chance > 5:
                             chance -= 10
                     else:
                         v=-1
-                        if chance > 5:
+                        if chance < 75:
                             chance += 10
                 if v == 0:
                     value += '□'
@@ -568,11 +568,11 @@ async def on_raw_reaction_add(reaction):
                     act = True
                     if now < chance:
                         v=1
-                        if chance < 75:
+                        if chance > 5:
                             chance -= 10
                     else:
                         v=-1
-                        if chance > 5:
+                        if chance < 75:
                             chance += 10
                 if v == 0:
                     value += '□'

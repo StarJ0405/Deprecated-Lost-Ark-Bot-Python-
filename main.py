@@ -462,7 +462,7 @@ async def on_raw_reaction_add(reaction):
                 for ro in roles:
                     if ro.id == parties2[party]:
                         await user.add_roles(ro)
-    elif "돌 깍기" in title:
+    elif "돌 기" in title:
         await msg.remove_reaction(reaction.emoji,user)
         if user.name != embed.author.name:
             print(f"{user.name}님이 {embed.author.name}님의 돌을 계속 시도합니다.")
@@ -678,7 +678,7 @@ async def on_message(msg):
             elif "뭐해" in msg.content:
                 return await msg.channel.send("알아서 뭐하게")
             elif "할줄" in msg.content:
-                return await msg.channel.send(f"얼마 [가격], [가디언이름], \'마법의 별\' ㅇㅇㅇ?, 돌 깍기")
+                return await msg.channel.send(f"얼마 [가격], [가디언이름], \'마법의 별\' ㅇㅇㅇ?, 돌 깎기")
             elif "얼마" in msg.content:
                 numbers = int(re.sub('958224347116494918','',re.sub(r'[^0-9]','',msg.content)))
                 return await msg.channel.send(f"4인 기준 : {int(numbers*0.66)}원\n8인 기준 : {int(numbers*0.77)}원")
@@ -687,8 +687,8 @@ async def on_message(msg):
                     if em.name == "mo_noona":
                         a = em
                 return await msg.channel.send(f"{a}")
-            elif "돌 깍기" in msg.content or "돌깍기" in msg.content :
-                embed = discord.Embed(title="돌 깍기 시뮬레이터",color=0xFF0000)
+            elif "돌 깎기" in msg.content or "돌깎기" in msg.content :
+                embed = discord.Embed(title="돌 깎기 시뮬레이터",color=0xFF0000)
                 embed.add_field(name="성공 확률",value="75%",inline=False)
                 embed.add_field(name="증가 능력1",value=f"□□□□□□□□□□",inline=False)
                 embed.add_field(name="증가 능력2",value=f"□□□□□□□□□□",inline=False)

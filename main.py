@@ -573,7 +573,7 @@ async def on_message(msg):
                 embed.add_field(name="증가 능력1",value=f"□□□□□□□□□□",inline=False)
                 embed.add_field(name="증가 능력2",value=f"□□□□□□□□□□",inline=False)
                 embed.add_field(name="감소 능력",value=f"□□□□□□□□□□",inline=False)
-                embed.set_author(msg.author,msg.author.name)
+                embed.set_author(name=msg.author.name)
                 msg = await msg.channel.send(embed=embed)
                 await msg.add_reaction("1️⃣")
                 await msg.add_reaction("2️⃣")

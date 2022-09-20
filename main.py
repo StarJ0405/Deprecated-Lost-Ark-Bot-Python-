@@ -8,7 +8,6 @@ import os
 import re
 import time as tm
 
-Token = os.environ.get('Token')
 intents = discord.Intents.all()
 intents.members = True
 bot=commands.Bot(command_prefix='%',intents = intents)
@@ -702,4 +701,4 @@ async def on_message(msg):
             replies = ["🤬","☠","🤘🤘 니코니코니~","왜 불러","불만있냐 자세를 고쳐 앉아"]
             c = random.randrange(0,len(replies))
             await msg.channel.send(replies[c])
-bot.run(Token)
+bot.run(os.environ.get('Token'))

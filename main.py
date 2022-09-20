@@ -477,18 +477,66 @@ async def on_raw_reaction_add(reaction):
                 thr_i = ind
             elif field.name == "성공 확률":
                 chance = int(re.sub("%","",field.value))
-        print(f"{one_i} {two_i} {thr_i} {chance}")
+        now  = random.randrange(0,100)
         if str(reaction.emoji.name) == "1️⃣" and one[9] == 0:
             field = fields[one_i]
-            embed.set_field_at(index=one_i,name=field.name,value="필..수?",inline=field.inline)
+            value = ""
+            act = False
+            for slot in range(len(one)):
+                v = one[slot]
+                if !act and v == 0:
+                    act = True
+                    if now < chance:
+                        v=1
+                    else:
+                        v=-1
+                if v == 0:
+                    value += □
+                elif v == -1:
+                    value += ▩
+                elif v == 1:
+                    value += ■
+            embed.set_field_at(index=one_i,name=field.name,value=value,inline=field.inline)
             await msg.edit(embed=embed)
         elif str(reaction.emoji.name) == "2️⃣" and two[9] == 0:
             field = fields[two_i]
-            embed.set_field_at(index=two_i,name=field.name,value="필..수?",inline=field.inline)
+            value = ""
+            act = False
+            for slot in range(len(two)):
+                v = two[slot]
+                if !act and v == 0:
+                    act = True
+                    if now < chance:
+                        v=1
+                    else:
+                        v=-1
+                if v == 0:
+                    value += □
+                elif v == -1:
+                    value += ▩
+                elif v == 1:
+                    value += ■
+            embed.set_field_at(index=two_i,name=field.name,value=value,inline=field.inline)
             await msg.edit(embed=embed)
         elif str(reaction.emoji.name) == "3️⃣" and thr[9] == 0:
             field = fields[thr_i]
-            embed.set_field_at(index=thr_i,name=field.name,value="필..수?",inline=field.inline)
+            value = ""
+            act = False
+            for slot in range(len(thr)):
+                v = thr[slot]
+                if !act and v == 0:
+                    act = True
+                    if now < chance:
+                        v=1
+                    else:
+                        v=-1
+                if v == 0:
+                    value += □
+                elif v == -1:
+                    value += ▩
+                elif v == 1:
+                    value += ■
+            embed.set_field_at(index=thr_i,name=field.name,value=value,inline=field.inline)
             await msg.edit(embed=embed)
 
             

@@ -534,12 +534,7 @@ async def on_message(msg):
         await bot.process_commands(msg)
     elif msg.author.id != 958224347116494918:
         if bot.user in msg.mentions:
-            if "먕누나" in msg.content or "먕난나" in msg.content:
-                for em in msg.guild.emojis:
-                    if em.name == "mo_noona":
-                        a = em
-                return await msg.channel.send(f"{a}")
-            elif "뭐해" in msg.content:
+            if "뭐해" in msg.content:
                 return await msg.channel.send("알아서 뭐하게")
             elif "할줄" in msg.content:
                 return await msg.channel.send(f"얼마 [가격], [가디언이름], \'마법의 별\' ㅇㅇㅇ?, 돌 깍기")
@@ -550,6 +545,11 @@ async def on_message(msg):
                 answers = ["언젠가는 하겠죠.","가만있어요.","다 안 돼요.","그것도 안 돼요.","좋아요.","다시 한 번 물어봐요.","괜찮아요","안 돼요.","돼요"]
                 c = random.randrange(0,len(answers))
                 return await msg.channel.send(answers[c])
+            elif "먕누나" in msg.content or "먕난나" in msg.content:
+                for em in msg.guild.emojis:
+                    if em.name == "mo_noona":
+                        a = em
+                return await msg.channel.send(f"{a}")
             elif "돌 깍기" in msg.content or "돌깍기" in msg.content :
                 embed = discord.Embed(title="돌 깍기 시뮬레이터",color=0xFF0000)
                 embed.add_field(name="증가 능력1",value=f"◇◇◇◇◇◇◇◇◇◇",inline=False)

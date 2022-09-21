@@ -508,7 +508,7 @@ async def on_raw_reaction_add(reaction):
             elif field.name == "성공 확률":
                 chance = int(re.sub("%","",field.value))
                 chance_i = ind
-        now  = random.randrange(0,1000) / 10.0
+        now  = random.random()*100
         print(f"{user.name} {now} / {chance}")
         if str(reaction.emoji.name) == "1️⃣" and one[9] == 0:
             field = fields[one_i]

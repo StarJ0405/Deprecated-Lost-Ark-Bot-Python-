@@ -7,6 +7,8 @@ import random
 import os
 import re
 import time as tm
+import sys
+import traceback
 
 intents = discord.Intents.all()
 intents.members = True

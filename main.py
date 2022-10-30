@@ -124,7 +124,9 @@ async def task_loop():
 async def 와봐(ctx):
     if ctx.author.voice and ctx.author.voice.channel:
         channel = ctx.author.voice.channel
+        print("A")
         await channel.connect(timeout=3)
+        print("B")
     else:
     	await ctx.send("음성채널 없음")
 

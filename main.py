@@ -120,6 +120,18 @@ async def task_loop():
         timers.remove(dell)
         print(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
 
+@bot.command(aliases=['join'])
+async def 와봐(ctx):
+    if ctx.author.voice and ctx.author.voice.channel:
+        channel = ctx.author.voice.channel
+        await channel.connect()
+    else:
+    	await ctx.send("음성채널 없음")
+
+@bot.command(aliases=['leave','꺼져'])
+async def 저리가(ctx):
+    await bot.voice_clients[0].disconnect()
+    
 @bot.command(aliases=['helps'])
 async def 도움말(ctx):
     embed = discord.Embed(title="명령어",color=0xFFD700)

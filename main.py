@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands, tasks
 import datetime as date
 from datetime import timedelta
-import PyNaCl
 #from key import Token
 import random
 import os

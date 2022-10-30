@@ -698,6 +698,9 @@ async def on_message(msg):
                 return await msg.channel.send(answers[c])
             elif "뭐해" in msg.content:
                 return await msg.channel.send("알아서 뭐하게")
+            elif "join" in msg.content:
+                channel = message.author.voice.channel 
+                await channel.connect()
             elif "할줄" in msg.content:
                 return await msg.channel.send(f"얼마 [가격], [가디언이름], \'마법의 별\' ㅇㅇㅇ?, 돌 깎기")
             elif "얼마" in msg.content:

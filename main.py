@@ -42,7 +42,11 @@ async def on_ready():
     print('연결이 완료되었습니다.')
     task_loop.start()
     await bot.change_presence(status=discord.Status.online, activity=None)
-
+@bot.event
+async def on_command_error(ctx, error):
+    print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+    traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+                           
 @bot.event
 async def on_command_error(ctx,error):
     if isinstance(error,commands.CommandNotFound):

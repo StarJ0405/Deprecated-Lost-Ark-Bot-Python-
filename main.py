@@ -132,8 +132,8 @@ async def 와봐(ctx):
     if ctx.author.voice and ctx.author.voice.channel:
         channel = ctx.author.voice.channel
         print(channel.name)
-        await channel.connect()
         await bot.join_voice_channel(channel)
+        #await channel.connect()
     else:
     	await ctx.send("음성채널 없음")
 

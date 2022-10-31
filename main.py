@@ -127,6 +127,7 @@ async def task_loop():
         timers.remove(dell)
         print(f"{dell.getdatetime()} - {dell.gettext()} 이 삭제되었습니다.")
 
+'''
 @bot.command(aliases=['join'])
 async def 와봐(ctx):
     if ctx.author.voice and ctx.author.voice.channel:
@@ -136,7 +137,7 @@ async def 와봐(ctx):
         #await channel.connect()
     else:
     	await ctx.send("음성채널 없음")
-
+'''
 @bot.command(aliases=['leave','꺼져'])
 async def 저리가(ctx):
     await bot.voice_clients[0].disconnect()
@@ -701,7 +702,7 @@ async def on_message(msg):
             elif "join" in msg.content:
                 channel = msg.author.voice.channel 
                 print(channel.name)
-                await channel.connect()
+                return await channel.connect()
             elif "할줄" in msg.content:
                 return await msg.channel.send(f"얼마 [가격], [가디언이름], \'마법의 별\' ㅇㅇㅇ?, 돌 깎기")
             elif "얼마" in msg.content:
